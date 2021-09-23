@@ -1,0 +1,36 @@
+[33mcommit a67bb98a69021b6a369c0cdede0e5d6074faa846[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 3eb78c1 915bcaa
+Author: Gary Au <tcgaryau@gmail.com>
+Date:   Thu Sep 23 11:18:58 2021 -0700
+
+    fixing conflict with origin main
+
+[33mcommit 915bcaaf5e6255aa1841009ceb9ee58908be1acd[m
+Author: Dongwan Kang <dkang48@my.bcit.ca>
+Date:   Thu Sep 23 11:11:41 2021 -0700
+
+    Added one line of intro to the README file
+
+[33mcommit e21f9daa21d4f61850a2f35810a32bca3bb8d499[m
+Author: Gary Au <tcgaryau@gmail.com>
+Date:   Thu Sep 23 11:06:56 2021 -0700
+
+    fixed conflict error. Added 1 line intro to README file for Gary
+
+[33mcommit 3eb78c12bab4425d1aca96da3d59bb8dd0e8ec00[m
+Author: Gary Au <tcgaryau@gmail.com>
+Date:   Thu Sep 23 10:58:10 2021 -0700
+
+    Added one line intro to README file for Gary
+
+[33mcommit b4043085116466c4c6b870772dfabf2ad85f9834[m
+Author: Felix Ng <felix.jh.ng@gmail.com>
+Date:   Thu Sep 23 10:57:07 2021 -0700
+
+    added my one liner to README file for Felix
+
+[33mcommit e4fa47f354c00a6096d7d2efb49429de40de2b6f[m
+Author: tcgaryau <90586875+tcgaryau@users.noreply.github.com>
+Date:   Thu Sep 23 10:43:40 2021 -0700
+
+    Initial commit
