@@ -7,6 +7,7 @@
 ## General Info
 This browser based web application to ...
 * Hello, I'm Felix.
+* Hi my name is Gary. I'm excited about this project because I get to learn how to colloborate using git.
 	
 ## Technologies
 Technologies used for this project:
