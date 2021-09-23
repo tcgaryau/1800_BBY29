@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+* Hello, I'm Felix.
 	
 ## Technologies
 Technologies used for this project:
