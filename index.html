@@ -1,18 +1,114 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>My BCIT Project</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
-</head>
+    <meta name="comp1800 boilerplate code" content="my bcit project" />
+    <meta name="author" content="BCIT" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- Google Icons (Material Design)-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Hobby App</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Activities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hobbies</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Welcome to the ultimate hobby app!</h1>
+        <p class="col-md-8 fs-4">
+          Let's get started with meeting new people with same hobbies as you!
+        </p>
+        <button class="btn btn-warning btn-lg" type="button">
+          Login/Signup
+        </button>
+      </div>
+    </div>
 
-    
+    <div class="card-group">
+      <div class="card">
+        <img src="./images/helpful.jpg" class="card-img-top" alt="helpful" />
+        <div class="card-body">
+          <h5 class="card-title">Helpful</h5>
+          <p class="card-text">
+            We will help you find the right people for the right activities you
+            want to enjoy!
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./images/helpful.jpg" class="card-img-top" alt="helpful" />
+        <div class="card-body">
+          <h5 class="card-title">Enjoyable</h5>
+          <p class="card-text">We make sure you have fun from using our app!</p>
+          <p class="card-text">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./images/helpful.jpg" class="card-img-top" alt="helpful" />
+        <div class="card-body">
+          <h5 class="card-title">Sociable</h5>
+          <p class="card-text">
+            COVID-19 halted your social circle and activities, so we will help
+            you get them back!
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </p>
+        </div>
+      </div>
+    </div>
 
-</body>
+    <br /><br /><br /><br />
 
+    <footer class="bg-light text-center text-lg-start">
+      <!-- Copyright -->
+      <div class="text-center py-3" style="background-color: #ffc107;">
+        © 2021 Copyright:
+        <a class="text-dark">BBY-29 Hobby App</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </body>
 </html>
