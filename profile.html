@@ -10,6 +10,17 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+        .profile {
+            text-align: center;
+        }
+
+        img {
+            max-height: 300px;
+            display: block;
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,8 +47,46 @@
         </div>
     </nav>
 
+    <div class="profile">
+        <h1>My Profile</h1>
+        <br><br>
+    </div>
 
-    <footer class="bg-light text-center text-lg-start fixed-bottom">
+    <div class="gap-2">
+        <img src="https://images.unsplash.com/photo-1597586124394-fbd6ef244026?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
+            alt="a picture of me">
+        <br>
+        <button class="btn btn-outline-primary btn-sm position-relative start-50 translate-middle" type="button">Change
+            Profile Photo</button>
+    </div>
+
+    <div class="questions">
+        <label> Enter your name</label>
+        <br>
+        <input id="name" type="text">
+        <br><br>
+        <label> Enter your age</label>
+        <br>
+        <input id="age" type="text">
+
+        <div class="mb-3 col-sm-5">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll always share your email with everyone.</div>
+        </div>
+        <div class="mb-3 col-sm-5">
+            <label for="exampleInputPassword1" class="form-label">Change your Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+
+          <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+
+
+
+
+
+    <footer class="bg-light text-center text-lg-start">
         <!-- Copyright -->
         <div class="text-center py-3" style="background-color: #ffc107;">
             © 2021 Copyright:

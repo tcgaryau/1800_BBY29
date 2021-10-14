@@ -1,0 +1,80 @@
+[33mcommit 6207280f51318714cb34622708205864882af4bd[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Felix Ng <felix.jh.ng@gmail.com>
+Date:   Wed Oct 13 16:40:35 2021 -0700
+
+    fixed index.html and started profile.html
+
+[33mcommit b5b90b41e2eaf852f681add04faf419a94d65759[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: d86b603 a48595b
+Author: Dongwan Kang <dkang48@my.bcit.ca>
+Date:   Wed Oct 13 15:13:49 2021 -0700
+
+    Merge branch 'main' of https://github.com/tcgaryau/1800_BBY29
+
+[33mcommit d86b60362aa1b51e36b9f3a7090698124c454593[m
+Author: Dongwan Kang <dkang48@my.bcit.ca>
+Date:   Wed Oct 13 15:12:43 2021 -0700
+
+    I made the index.html file working
+
+[33mcommit a48595bbac6b2e8716739de7352dffe18d2748f5[m
+Author: Gary Au <tcgaryau@gmail.com>
+Date:   Thu Sep 23 11:32:15 2021 -0700
+
+    fixing hash in readme
+
+[33mcommit a1e356bcc7d1fe4ac9cd6aee54c75fd58ee8159e[m
+Merge: 9b99687 a67bb98
+Author: Dongwan Kang <dkang48@my.bcit.ca>
+Date:   Thu Sep 23 11:23:04 2021 -0700
+
+    fixing confict changes.
+
+[33mcommit 9b996879d6e5b6bcd9b1d5f2c20c746878baa397[m
+Author: Dongwan Kang <dkang48@my.bcit.ca>
+Date:   Thu Sep 23 11:21:28 2021 -0700
+
+    Added intro once again to README
+
+[33mcommit a67bb98a69021b6a369c0cdede0e5d6074faa846[m
+Merge: 3eb78c1 915bcaa
+Author: Gary Au <tcgaryau@gmail.com>
+Date:   Thu Sep 23 11:18:58 2021 -0700
+
+    fixing conflict with origin main
+
+[33mcommit 915bcaaf5e6255aa1841009ceb9ee58908be1acd[m
+Author: Dongwan Kang <dkang48@my.bcit.ca>
+Date:   Thu Sep 23 11:11:41 2021 -0700
+
+    Added one line of intro to the README file
+
+[33mcommit e21f9daa21d4f61850a2f35810a32bca3bb8d499[m
+Author: Gary Au <tcgaryau@gmail.com>
+Date:   Thu Sep 23 11:06:56 2021 -0700
+
+    fixed conflict error. Added 1 line intro to README file for Gary
+
+[33mcommit 92f5fa66cc587b8a6fa5c227e65b307c8020c452[m
+Author: Dongwan Kang <dkang48@my.bcit.ca>
+Date:   Thu Sep 23 10:59:45 2021 -0700
+
+    Added one line intro to the README file
+
+[33mcommit 3eb78c12bab4425d1aca96da3d59bb8dd0e8ec00[m
+Author: Gary Au <tcgaryau@gmail.com>
+Date:   Thu Sep 23 10:58:10 2021 -0700
+
+    Added one line intro to README file for Gary
+
+[33mcommit b4043085116466c4c6b870772dfabf2ad85f9834[m
+Author: Felix Ng <felix.jh.ng@gmail.com>
+Date:   Thu Sep 23 10:57:07 2021 -0700
+
+    added my one liner to README file for Felix
+
+[33mcommit e4fa47f354c00a6096d7d2efb49429de40de2b6f[m
+Author: tcgaryau <90586875+tcgaryau@users.noreply.github.com>
+Date:   Thu Sep 23 10:43:40 2021 -0700
+
+    Initial commit
