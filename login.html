@@ -88,8 +88,15 @@
             </li>
           </ul>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
           </form>
         </div>
       </div>
@@ -104,6 +111,14 @@
     </div>
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-lg-start">
+      <!-- Copyright -->
+      <div class="text-center py-3 text-white">
+        © 2021 Copyright: BBY-29 Hobby App
+      </div>
+    </footer>
 
     <script>
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
