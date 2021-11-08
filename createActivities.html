@@ -95,6 +95,105 @@
         </div>
       </div>
     </nav>
+    <!-- Create Activity Form-->
+
+    <br /><br /><br />
+    <div class="container-lg">
+      <div class="container text-center fw-bold fst-italic">
+        <h1>Create your activity</h1>
+      </div>
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label for="activityCategory" class="form-label"
+            >Activity Category</label
+          >
+          <select
+            id="activityCategory"
+            class="form-select"
+            aria-label="activity category"
+          >
+            <option selected>Gaming</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="activityName" class="form-label">Activity Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="activityName"
+            placeholder="Enter the Event Name"
+            required
+          />
+        </div>
+        <div class="col-md-12">
+          <label for="descriptionText" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="descriptionText"
+            rows="5"
+          ></textarea>
+        </div>
+        <div class="col-md-12">
+          <input
+            type="text"
+            class="form-control"
+            value="22/12/2020, 14:12:56"
+            id="datetimepickerExample"
+          />
+          <label for="datetimepickerExample" class="form-label"
+            >Select Date and Time</label
+          >
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault03" class="form-label">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            required
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="validationDefault04" class="form-label">City</label>
+          <select class="form-select" id="validationDefault04" required>
+            <option selected disabled value="">Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="validationDefault05" class="form-label">Zip</label>
+          <input
+            type="text"
+            class="form-control"
+            id="validationDefault05"
+            required
+          />
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="invalidCheck2"
+              required
+            />
+            <label class="form-check-label" for="invalidCheck2">
+              Agree to terms and conditions
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-dark text-center text-lg-start fixed-bottom">
