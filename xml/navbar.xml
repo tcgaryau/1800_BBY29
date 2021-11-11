@@ -26,7 +26,7 @@
         <a class="nav-link" href="main.html">Browse</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">My Activities</a>
+        <a class="nav-link" href="myActivities.html">My Activities</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="profile.html">My Profile</a>
