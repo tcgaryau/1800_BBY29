@@ -10,6 +10,7 @@ function ajaxGET(path, callback) {
   xhr.send();
 }
 
+//Navbar - DOM
 let navBar = document.getElementById("navbar");
 navBar.classList.add(
   "navbar",
@@ -23,6 +24,7 @@ ajaxGET("./xml/navbar.xml", function (data) {
   navBar.innerHTML = data;
 });
 
+//Footer - deleted for now
 let footer = document.getElementById("footer");
 footer.classList.add("bg-dark", "text-center", "text-lg-start", "fixed-bottom");
 
