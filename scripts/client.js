@@ -1,3 +1,4 @@
+
 function ajaxGET(path, callback) {
   // Document is loaded now so go and fetch a resource.
   const xhr = new XMLHttpRequest();
@@ -25,6 +26,7 @@ ajaxGET("./xml/navbar.xml", function (data) {
 });
 
 //Footer - deleted for now
+<<<<<<< HEAD
 /*
 let footer = document.getElementById("footer");
 footer.classList.add("bg-dark", "text-center", "text-lg-start", "fixed-bottom");
@@ -33,3 +35,11 @@ ajaxGET("./xml/footer.xml", function (data) {
   footer.innerHTML = data;
 });
 */
+=======
+//let footer = document.getElementById("footer");
+//footer.classList.add("bg-dark", "text-center", "text-lg-start", "fixed-bottom");
+
+//ajaxGET("./xml/footer.xml", function (data) {
+//  footer.innerHTML = data;
+//});
+>>>>>>> 6324dec1bb39126ea4b6978f96d3e539714d4993

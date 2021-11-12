@@ -1,40 +1,33 @@
 // TOOD unify IDs
 
 // Initialize firebase app and database
-const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+//const app = firebase.initializeApp(firebaseConfig);
+//const db = firebase.firestore();
 
 
-// Listen for form submission
-document.getElementById('').addEventListener('', submitForm);
+function submitForm(){
+    console.log("user pressed submit")
 
-function submitForm(e){
-    e.preventDefault();
+    let newActivity = db.collection("Hobbies");
 
     // Retrieve the values
-    var name = getInputVal('');
-    var category = getInputVal('');
-    var description = getInputVal('');
-    var time = getInputVal('');
-    var location = getInputVal('');
+    
+    let aName = document.getElementById('activityName').value;
+    //let category = document.getElementById('activityCategory');
+    let description = document.getElementById('descriptionText').value;
+    let time = document.getElementById('datetimepickerExample').value;
+    let location = document.getElementById('address').value;
+    let ZIP = document.getElementById('zip').value;
 
-    // Save activity
-    saveActivity(name, description, time, location);
+    console.log(aName);
 
-
-}
-
-// Function to retrieve the form's values
-function getInputVal(id){
-    return document.getElementById(id).value; 
-}
-
-// Save activity to firebase
-function saveActivity(name, description, time, location){
-    var newActivityRed = db.collection("Hobbies").doc(category).set({
-        name: name,
+    newActivity.add({
+        name: aName,
+        //category: category,
         description: description,
         time:  time,
-        location: location
+        location: location,
+        ZIP: ZIP
     })
 }
+

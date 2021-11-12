@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Hobby Buddies</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
     <meta name="comp1800 Hobby Buddies Code" content="Hobby Buddies" />
     <meta name="Gary Au Felix Ng Dongwan Kang" content="BCIT Group project" />
     <!-- Bootsrap CSS-->
@@ -114,12 +114,7 @@
         </div>
         <div class="col-md-3">
           <label for="validationDefault05" class="form-label">Zip</label>
-          <input
-            type="text"
-            class="form-control"
-            id="validationDefault05"
-            required
-          />
+          <input type="text" class="form-control" id="zip" required />
         </div>
         <div class="col-12">
           <div class="form-check">
@@ -136,15 +131,18 @@
           </div>
         </div>
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
+          <button class="btn btn-primary" onclick="submitForm()">Submit ur mom
+          </button>
+            
         </div>
       </form>
     </div>
 
-    <!-- Fill this with firestore data -->
+
 
     <!-- Own Script -->
-    <script src="scripts/client.js"></script>
+    <script src="./scripts/client.js"></script>
+    <script src="./scripts/form.js"></script>
 
     <!-- Bootstrap Script-->
     <script
@@ -162,6 +160,5 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="form.js"></script>
   </body>
 </html>
