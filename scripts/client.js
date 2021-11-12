@@ -1,3 +1,4 @@
+
 function ajaxGET(path, callback) {
   // Document is loaded now so go and fetch a resource.
   const xhr = new XMLHttpRequest();
