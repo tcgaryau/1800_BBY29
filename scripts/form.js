@@ -24,7 +24,7 @@ function submitForm() {
       let aName = document.getElementById("activityName").value;
       var category = x.options[x.selectedIndex].text;
       let description = document.getElementById("descriptionText").value;
-      let time = document.getElementById("datetimepickerExample").value;
+      let time = document.getElementById("datetimepicker").value;
       let location = document.getElementById("address").value;
       var city = y.options[y.selectedIndex].value;
       let ZIP = document.getElementById("zip").value;
