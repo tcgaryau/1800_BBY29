@@ -15,7 +15,7 @@ function submitForm() {
       console.log("user pressed submit");
 
       let newActivity = db.collection("Hobbies");
-
+      
       // Retrieve the values
 
       let x = document.getElementById("activityCategory");
@@ -23,7 +23,6 @@ function submitForm() {
 
       let aName = document.getElementById("activityName").value;
       var category = x.options[x.selectedIndex].text;
-      let maxUsers = document.getElementById("").value;
       let description = document.getElementById("descriptionText").value;
       let time = document.getElementById("datetimepicker").value;
       let location = document.getElementById("address").value;
@@ -33,8 +32,6 @@ function submitForm() {
       console.log(aName);
       console.log(city);
 
-      const joinedUser = [];
-
       newActivity.add({
         name: aName,
         category: category,
@@ -43,10 +40,13 @@ function submitForm() {
         location: location,
         province: city,
         postalCode: ZIP,
-        host: userID,
-        joinedUser: joinedUser,
-        maxUsers: maxUsers,
+        host: userID
       });
+
+      await updateDoc(currentUser, {
+        hostedActivity: arrayUnion(aName)
+      });
+      
     } else {
       console.log("No user is signed in");
     }
