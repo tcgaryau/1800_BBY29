@@ -8,6 +8,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
             // or whether we leave that to developer to handle.
             var user = authResult.user;
             const joinedActivity = [];
+            const hostedActivity = [];
             if (authResult.additionalUserInfo.isNewUser) {
               db.collection("users")
                 .doc(user.uid)
@@ -15,6 +16,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
                   name: user.displayName,
                   email: user.email,
                   joinedActivity: joinedActivity,
+                  hostedActivity: hostedActivity,
                 })
                 .then(function () {
                   console.log("Next victim added to firestore");
