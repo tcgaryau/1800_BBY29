@@ -32,6 +32,8 @@ function submitForm() {
       console.log(aName);
       console.log(city);
 
+      const joinedUser = [];
+      
       newActivity.add({
         name: aName,
         category: category,
@@ -41,7 +43,8 @@ function submitForm() {
         province: city,
         postalCode: ZIP,
         host: userID,
-        
+        joinedUser: joinedUser
+
       });
     } else {
       console.log("No user is signed in");
