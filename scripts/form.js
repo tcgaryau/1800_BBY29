@@ -43,13 +43,11 @@ function submitForm() {
         host: userID,
       });
 
-      db.collection("users")
-        .doc(userID)
-        .update({
-          hostedActivity: firebase.firestore.FieldValue.arrayUnion(
-            newActivity.id
-          ),
-        });
+      // currentUser.update({
+      //   hostedActivity: firebase.firestore.FieldValue.arrayUnion(
+      //     newActivity.id
+      //   ),
+      // });
       // await updateDoc(currentUser, {
       //   hostedActivity: arrayUnion(aName)
       // });
