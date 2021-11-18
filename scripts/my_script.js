@@ -38,3 +38,11 @@ function insertName() {
     });
   }
   insertName();
+
+  function logOut() {
+    firebase.auth().signOut().then(() => {
+      //sign out
+    }).catch(error => {
+      //an error
+    })
+  }
