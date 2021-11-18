@@ -23,6 +23,7 @@ function submitForm() {
 
       let aName = document.getElementById("activityName").value;
       var category = x.options[x.selectedIndex].text;
+      let maxUsers = document.getElementById("").value;
       let description = document.getElementById("descriptionText").value;
       let time = document.getElementById("datetimepickerExample").value;
       let location = document.getElementById("address").value;
@@ -33,7 +34,7 @@ function submitForm() {
       console.log(city);
 
       const joinedUser = [];
-      
+
       newActivity.add({
         name: aName,
         category: category,
@@ -43,9 +44,10 @@ function submitForm() {
         province: city,
         postalCode: ZIP,
         host: userID,
-        joinedUser: joinedUser
-
+        joinedUser: joinedUser,
+        maxUsers: maxUsers,
       });
+
     } else {
       console.log("No user is signed in");
     }
