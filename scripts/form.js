@@ -44,7 +44,7 @@ function submitForm() {
       });
 
       await updateDoc(currentUser, {
-        hostedActivity: arrayUnion(aName)
+        hostedActivity: firebase.firestore.FieldValue.arrayUnion(aName)
       });
       
     } else {
