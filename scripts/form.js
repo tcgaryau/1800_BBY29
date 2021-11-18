@@ -15,7 +15,7 @@ function submitForm() {
       console.log("user pressed submit");
 
       let newActivity = db.collection("Hobbies");
-      
+
       // Retrieve the values
 
       let x = document.getElementById("activityCategory");
@@ -40,13 +40,19 @@ function submitForm() {
         location: location,
         province: city,
         postalCode: ZIP,
-        host: userID
+        host: userID,
       });
 
-      await updateDoc(currentUser, {
-        hostedActivity: arrayUnion(aName)
-      });
-      
+      db.collection("users")
+        .doc(userID)
+        .update({
+          hostedActivity: firebase.firestore.FieldValue.arrayUnion(
+            newActivity.id
+          ),
+        });
+      // await updateDoc(currentUser, {
+      //   hostedActivity: arrayUnion(aName)
+      // });
     } else {
       console.log("No user is signed in");
     }
