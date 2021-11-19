@@ -44,7 +44,7 @@ function submitForm() {
       });
       // hello
       db.collection("users").doc(user.uid).update({
-        hostedActivity: firebase.firestore.FieldValue.arrayUnion(aName)
+        hostedActivity: firebase.firestore.FieldValue.arrayUnion(activity.uid)
       });
      
     } else {
