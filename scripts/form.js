@@ -1,8 +1,8 @@
 const activityCategory = document.getElementById("activityCategory");
 const city = document.getElementById("city");
 
-window.onload = function () {
-  document.getElementById("form1").onsubmit = function () {
+window.onload = () => {
+  document.getElementById("form1").onsubmit = () => {
     window.location.replace("main.html");
     return false;
   };
@@ -36,6 +36,7 @@ function submitForm() {
       let userID = user.uid;
       let newActivity = db.collection("Hobbies");
 
+      //Adding activity into firestore
       newActivity
         .add({
           name: aName,
@@ -46,7 +47,7 @@ function submitForm() {
           province: aCity,
           postalCode: ZIP,
           host: userID,
-        })
+        }) // Returning the promise to grab the generated ID
         .then((docRef) => {
           let docID = docRef.id;
           db.collection("users")
