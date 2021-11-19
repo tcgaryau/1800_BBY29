@@ -42,7 +42,7 @@ function submitForm() {
         postalCode: ZIP,
         host: userID,
       });
-
+      // hello
       db.collection("users").doc(user.uid).update({
         hostedActivity: firebase.firestore.FieldValue.arrayUnion(aName)
       });
