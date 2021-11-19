@@ -43,14 +43,10 @@ function submitForm() {
         host: userID,
       });
 
-      // currentUser.update({
-      //   hostedActivity: firebase.firestore.FieldValue.arrayUnion(
-      //     newActivity.id
-      //   ),
-      // });
-      // await updateDoc(currentUser, {
-      //   hostedActivity: arrayUnion(aName)
-      // });
+      db.collection("users").doc(user.uid).update({
+        hostedActivity: firebase.firestore.FieldValue.arrayUnion(aName)
+      });
+     
     } else {
       console.log("No user is signed in");
     }
