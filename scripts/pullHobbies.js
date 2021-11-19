@@ -29,8 +29,9 @@ const getNextHobbies = async () => {
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">${hobbies.name}</h5>
-              <p class="card-text">Description:<br>${hobbies.description}</p>
+              <h1 class="card-title">${hobbies.name}</h1>
+              <h5 class="card-title">Description:</h5>
+              <p class="card-text">${hobbies.description}</p>
             </div>
           </div>
         </div>
