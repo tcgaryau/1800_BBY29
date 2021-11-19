@@ -5,32 +5,35 @@
 //const db = firebase.firestore();
 
 var currentUser;
+
 function submitForm() {
+  // Retrieve the values
+
+  let activityCategory = document.getElementById("activityCategory");
+  let city = document.getElementById("city");
+
+  let aName = document.getElementById("activityName").value;
+  let category = activityCategory.options[activityCategory.selectedIndex].text;
+  let description = document.getElementById("descriptionText").value;
+  let time = document.getElementById("datetimepicker").value;
+  let location = document.getElementById("address").value;
+  let aCity = city.options[city.selectedIndex].value;
+  let ZIP = document.getElementById("zip").value;
+
+  console.log(`aName: ${aName}`);
+  console.log(`category: ${category}`);
+  console.log(`description: ${description}`);
+  console.log(`time: ${time}`);
+  console.log(`location: ${location}`);
+  console.log(`aCity: ${location}`);
+  console.log(`ZIP: ${ZIP}`);
+
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       //if user is logged in
       currentUser = db.collection("users").doc(user.uid);
-      var userID = user.uid;
-      console.log(currentUser);
-      console.log("user pressed submit");
-
+      let userID = user.uid;
       let newActivity = db.collection("Hobbies");
-
-      // Retrieve the values
-
-      let x = document.getElementById("activityCategory");
-      let y = document.getElementById("city");
-
-      let aName = document.getElementById("activityName").value;
-      var category = x.options[x.selectedIndex].text;
-      let description = document.getElementById("descriptionText").value;
-      let time = document.getElementById("datetimepicker").value;
-      let location = document.getElementById("address").value;
-      var city = y.options[y.selectedIndex].value;
-      let ZIP = document.getElementById("zip").value;
-
-      console.log(aName);
-      console.log(city);
 
       newActivity.add({
         name: aName,
@@ -38,17 +41,19 @@ function submitForm() {
         description: description,
         time: time,
         location: location,
-        province: city,
+        province: aCity,
         postalCode: ZIP,
         host: userID,
       });
 
-      db.collection("users").doc(user.uid).update({
-        hostedActivity: firebase.firestore.FieldValue.arrayUnion(aName)
-      });
-     
+      db.collection("users")
+        .doc(user.uid)
+        .update({
+          hostedActivity: firebase.firestore.FieldValue.arrayUnion(aName),
+        });
     } else {
       console.log("No user is signed in");
     }
   });
+  return false;
 }
