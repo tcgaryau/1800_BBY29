@@ -4,6 +4,13 @@
 //const app = firebase.initializeApp(firebaseConfig);
 //const db = firebase.firestore();
 
+window.onload = function() {
+  document.getElementById("form1").onsubmit = function() {
+    window.location.replace("main.html");
+    return false;
+  };
+};
+
 var currentUser;
 
 function submitForm() {
@@ -50,10 +57,16 @@ function submitForm() {
         .doc(user.uid)
         .update({
           hostedActivity: firebase.firestore.FieldValue.arrayUnion(aName),
+        })
+        .then((docRef) =>{
+          console.log("New event added with id:" + docRef);
+          window.location.replace("main.html")
         });
     } else {
       console.log("No user is signed in");
     }
   });
+
   return false;
 }
+

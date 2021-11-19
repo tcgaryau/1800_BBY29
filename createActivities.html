@@ -53,7 +53,7 @@
       <div class="container text-center fw-bold fst-italic pt-5">
         <h1>Create your activity</h1>
       </div>
-      <form class="row g-3">
+      <form class="row g-3" id="form1" method="post">
         <div class="col-md-6">
           <label for="activityCategory" class="form-label"
             >Activity Category</label
@@ -80,12 +80,11 @@
             class="form-control"
             id="activityName"
             placeholder="Enter the Event Name"
-            
           />
         </div>
         <div class="col-md-12">
           <label for="descriptionText" class="form-label">Description</label>
-          <textarea 
+          <textarea
             class="form-control"
             id="descriptionText"
             rows="5"
@@ -132,7 +131,9 @@
         </div>
 
         <div class="col-12">
-          <button class="btn btn-primary" onclick="return submitForm()">Submit</button>
+          <button class="btn btn-primary" id="submission" onclick="return submitForm()">
+            Submit
+          </button>
         </div>
       </form>
     </div>
