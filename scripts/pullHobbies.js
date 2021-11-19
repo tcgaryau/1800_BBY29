@@ -18,7 +18,7 @@ const getNextHobbies = async () => {
   data.docs.forEach((doc) => {
     const hobbies = doc.data();
     template += `
-      <div class="card mb-3" id=${doc.id}>
+      <div class="card mb-3 cardActivities" id=${doc.id}>
         <div class="row g-0 pt-5">
           <div class="col-md-4">
             <img
@@ -52,9 +52,16 @@ const getNextHobbies = async () => {
   });
 
   cards.forEach(card => {
-    card.addEventListener("mouseover", function(e) {
+    card.addEventListener("mouseenter", function(e) {
       e.stopPropagation();
       e.target.style.cursor="pointer";
+      e.target.style.color="orange";
+    })
+  })
+  cards.forEach(card => {
+    card.addEventListener("mouseleave", function(e) {
+      e.stopPropagation();
+      e.target.style.color=null;
     })
   })
   lastDoc = data.docs[data.docs.length - 1];
