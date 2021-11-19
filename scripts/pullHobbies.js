@@ -53,14 +53,12 @@ const getNextHobbies = async () => {
 
   cards.forEach(card => {
     card.addEventListener("mouseenter", function(e) {
-      e.stopPropagation();
       e.target.style.cursor="pointer";
       e.target.style.color="orange";
     })
   })
   cards.forEach(card => {
     card.addEventListener("mouseleave", function(e) {
-      e.stopPropagation();
       e.target.style.color=null;
     })
   })
