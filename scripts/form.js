@@ -1,18 +1,18 @@
 const activityCategory = document.getElementById("activityCategory");
 const city = document.getElementById("city");
+const activityForm = document.querySelector("#activityForm");
 
-window.onload = () => {
-  document.getElementById("form1").onsubmit = () => {
-    window.location.replace("main.html");
-    return false;
-  };
-};
+// window.onload = () => {
+//   document.getElementById("form1").onsubmit = () => {
+//     window.location.replace("main.html");
+//     return false;
+//   };
+// };
 
 var currentUser;
 
-function submitForm() {
-  // Retrieve the valuess
-
+activityForm.addEventListener("submit", event => {
+  event.preventDefault();
   let aName = document.getElementById("activityName").value;
   let category = activityCategory.options[activityCategory.selectedIndex].text;
   let description = document.getElementById("descriptionText").value;
@@ -20,14 +20,6 @@ function submitForm() {
   let location = document.getElementById("address").value;
   let aCity = city.options[city.selectedIndex].value;
   let ZIP = document.getElementById("zip").value;
-
-  console.log(`aName: ${aName}`);
-  console.log(`category: ${category}`);
-  console.log(`description: ${description}`);
-  console.log(`time: ${time}`);
-  console.log(`location: ${location}`);
-  console.log(`aCity: ${location}`);
-  console.log(`ZIP: ${ZIP}`);
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -64,6 +56,4 @@ function submitForm() {
       console.log("No user is signed in");
     }
   });
-
-  return false;
-}
+});
