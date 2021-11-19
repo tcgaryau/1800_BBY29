@@ -1,15 +1,17 @@
-const container = document.querySelector(".container");
+let cardContainer = document.querySelector(".cardContainer");
+let fetching = document.querySelector(".fetching");
 
 // Store last document
 let lastDoc = null;
 
 const getNextHobbies = async () => {
+  fetching.classList.add("active");
+
   ref = db
     .collection("Hobbies")
     .orderBy("name")
     .startAfter(lastDoc || 0)
     .limit(3);
-
   const data = await ref.get();
 
   //src image
@@ -39,12 +41,11 @@ const getNextHobbies = async () => {
     `;
   });
 
-  container.innerHTML += template;
+  cardContainer.innerHTML += template;
 
   let cards = document.querySelectorAll(".card");
-  console.log(cards);
   cards.forEach((card) => {
-    card.addEventListener("click", function(e) {
+    card.addEventListener("click", function (e) {
       let id = this.id;
       localStorage.setItem("currentActivity", id);
       // console.log(id);
@@ -52,32 +53,34 @@ const getNextHobbies = async () => {
     });
   });
 
-  cards.forEach(card => {
-    card.addEventListener("mouseenter", function(e) {
-      e.target.style.cursor="pointer";
-      e.target.style.color="orange";
-    })
-  })
-  cards.forEach(card => {
-    card.addEventListener("mouseleave", function(e) {
-      e.target.style.color=null;
-    })
-  })
+  fetching.classList.remove("active");
+
+  cards.forEach((card) => {
+    card.addEventListener("mouseenter", function (e) {
+      e.target.style.cursor = "pointer";
+      e.target.style.color = "orange";
+    });
+  });
+  cards.forEach((card) => {
+    card.addEventListener("mouseleave", function (e) {
+      e.target.style.color = null;
+    });
+  });
   lastDoc = data.docs[data.docs.length - 1];
 
   if (data.empty) {
-    loadMore.removeEventListener("click", handleClick);
-    document.getElementById("buttonContainer").innerHTML = "";
+    cardContainer.removeEventListener("scroll", handleScroll);
   }
 };
 
 // Wait for DOM to load
 window.addEventListener("DOMContentLoaded", () => getNextHobbies());
 
-const loadMore = document.getElementById("loadMore");
-
-const handleClick = () => {
-  getNextHobbies();
+const handleScroll = () => {
+  let fireHeight = cardContainer.scrollTop + cardContainer.offsetHeight;
+  if (fireHeight >= cardContainer.scrollHeight) {
+    getNextHobbies();
+  }
 };
 
-loadMore.addEventListener("click", handleClick);
+cardContainer.addEventListener("scroll", handleScroll);

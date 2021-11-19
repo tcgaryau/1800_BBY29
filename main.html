@@ -44,43 +44,19 @@
       href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
     />
     <script src="./scripts/firebaseAPI.js"></script>
+
+    <!-- My style -->
+    <link rel="stylesheet" href="./styles/main.css" />
   </head>
 
   <body>
     <!-- Navbar -->
     <nav id="navbar"></nav>
 
-    <div class="container mt-4 pt-5"></div>
-    <div class="container button-container text-center" id="buttonContainer">
-      <button
-        class="btn btn-dark text-light btn-lg btn-outline-success"
-        type="button"
-        id="loadMore"
-      >
-        Load More
-      </button>
+    <div class="container mt-4 pt-5 cardContainer"></div>
+    <div class="fetching">
+      <p>Fetching more activites</p>
     </div>
-
-    <!-- <div class="card mb-3 pt-5" style="max-width: 100%">
-      <div class="row g-0 pt-5">
-        <div class="col-md-4">
-          <img
-            src="./images/cartoongirlrope.jpg"
-            class="img-fluid rounded-start"
-            alt="rope"
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Activity 1</h5>
-            <p class="card-text">This is a card that shows the activities</p>
-            <p class="card-text">
-              <small class="text-muted">Last updated at some mins ago</small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     <!-- Own Script -->
     <script src="./scripts/client.js"></script>
