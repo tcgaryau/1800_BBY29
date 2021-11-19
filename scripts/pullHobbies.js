@@ -18,7 +18,7 @@ const getNextHobbies = async () => {
   data.docs.forEach((doc) => {
     const hobbies = doc.data();
     template += `
-      <div class="card mb-3 cardActivities" id=${doc.id}>
+      <div class="card mb-3" id=${doc.id}>
         <div class="row g-0 pt-5">
           <div class="col-md-4">
             <img
