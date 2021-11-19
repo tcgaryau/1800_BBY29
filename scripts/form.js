@@ -1,11 +1,8 @@
-// TOOD unify IDs
+const activityCategory = document.getElementById("activityCategory");
+const city = document.getElementById("city");
 
-// Initialize firebase app and database
-//const app = firebase.initializeApp(firebaseConfig);
-//const db = firebase.firestore();
-
-window.onload = function() {
-  document.getElementById("form1").onsubmit = function() {
+window.onload = function () {
+  document.getElementById("form1").onsubmit = function () {
     window.location.replace("main.html");
     return false;
   };
@@ -14,10 +11,7 @@ window.onload = function() {
 var currentUser;
 
 function submitForm() {
-  // Retrieve the values
-
-  let activityCategory = document.getElementById("activityCategory");
-  let city = document.getElementById("city");
+  // Retrieve the valuess
 
   let aName = document.getElementById("activityName").value;
   let category = activityCategory.options[activityCategory.selectedIndex].text;
@@ -42,25 +36,28 @@ function submitForm() {
       let userID = user.uid;
       let newActivity = db.collection("Hobbies");
 
-      newActivity.add({
-        name: aName,
-        category: category,
-        description: description,
-        time: time,
-        location: location,
-        province: aCity,
-        postalCode: ZIP,
-        host: userID,
-      });
-
-      db.collection("users")
-        .doc(user.uid)
-        .update({
-          hostedActivity: firebase.firestore.FieldValue.arrayUnion(aName),
+      newActivity
+        .add({
+          name: aName,
+          category: category,
+          description: description,
+          time: time,
+          location: location,
+          province: aCity,
+          postalCode: ZIP,
+          host: userID,
         })
-        .then((docRef) =>{
-          console.log("New event added with id:" + docRef);
-          window.location.replace("main.html")
+        .then((docRef) => {
+          let docID = docRef.id;
+          db.collection("users")
+            .doc(user.uid)
+            .update({
+              hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
+            });
+          window.location.replace("main.html");
+        })
+        .catch((error) => {
+          console.log("Error adding document: ", error);
         });
     } else {
       console.log("No user is signed in");
@@ -69,4 +66,3 @@ function submitForm() {
 
   return false;
 }
-

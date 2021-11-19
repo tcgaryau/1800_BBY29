@@ -7,16 +7,16 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
             // Return type determines whether we continue the redirect automatically
             // or whether we leave that to developer to handle.
             var user = authResult.user;
-            const joinedActivity = [];
-            const hostedActivity = [];
+            // const joinedActivity = [];
+            // const hostedActivity = [];
             if (authResult.additionalUserInfo.isNewUser) {
               db.collection("users")
                 .doc(user.uid)
                 .set({
                   name: user.displayName,
                   email: user.email,
-                  joinedActivity: joinedActivity,
-                  hostedActivity: hostedActivity,
+                  // joinedActivity: joinedActivity,
+                  // hostedActivity: hostedActivity,
                 })
                 .then(function () {
                   console.log("Next victim added to firestore");
