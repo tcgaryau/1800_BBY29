@@ -11,7 +11,7 @@ const activityForm = document.querySelector("#activityForm");
 
 var currentUser;
 
-activityForm.addEventListener("submit", event => {
+activityForm.addEventListener("submit", (event) => {
   event.preventDefault();
   let aName = document.getElementById("activityName").value;
   let category = activityCategory.options[activityCategory.selectedIndex].text;
@@ -47,7 +47,8 @@ activityForm.addEventListener("submit", event => {
             .update({
               hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
             });
-          window.location.replace("main.html");
+          localStorage.setItem("currentActivity", docID);
+          window.location.replace("activityDetails.html");
         })
         .catch((error) => {
           console.log("Error adding document: ", error);

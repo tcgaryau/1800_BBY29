@@ -5,7 +5,7 @@ let lastDoc = null;
 
 const getNextHobbies = async () => {
   ref = db
-    .collection("TestHobbies")
+    .collection("Hobbies")
     .orderBy("name")
     .startAfter(lastDoc || 0)
     .limit(3);

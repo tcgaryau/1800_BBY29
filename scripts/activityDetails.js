@@ -1,5 +1,5 @@
 let id = localStorage.getItem("currentActivity");
-let docRef = db.collection("TestHobbies").doc(id);
+let docRef = db.collection("Hobbies").doc(id);
 
 docRef
   .get()
@@ -10,6 +10,8 @@ docRef
       let aDescription = doc.data().description;
       console.log(aName);
       console.log(aDescription);
+      document.querySelector("h1").innerHTML = aName;
+      document.querySelector("p").innerHTML = aDescription;
     } else {
       console.log("No such document!");
     }
