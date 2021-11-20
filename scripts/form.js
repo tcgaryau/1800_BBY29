@@ -2,10 +2,6 @@ const activityCategory = document.getElementById("activityCategory");
 const city = document.getElementById("city");
 const activityForm = document.querySelector("#activityForm");
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1e4d4acb4ca4e9da6b754400036ec47559264ece
 
 activityForm.addEventListener("submit", (event) => {
   event.preventDefault();
