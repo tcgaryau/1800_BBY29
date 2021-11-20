@@ -83,10 +83,5 @@ function joinActivity() {
 }
 
 function searchJoinedActivity(id, array) {
-  array.forEach(function(arr) {
-    if (arr = id) {
-      return true;
-    }
-  });
-  return false;
+  return array.includes(id);
 }
