@@ -2,14 +2,7 @@ const activityCategory = document.getElementById("activityCategory");
 const city = document.getElementById("city");
 const activityForm = document.querySelector("#activityForm");
 
-// window.onload = () => {
-//   document.getElementById("form1").onsubmit = () => {
-//     window.location.replace("main.html");
-//     return false;
-//   };
-// };
 
-var currentUser;
 
 activityForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -24,7 +17,7 @@ activityForm.addEventListener("submit", (event) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       //if user is logged in
-      currentUser = db.collection("users").doc(user.uid);
+      
       let userID = user.uid;
       let newActivity = db.collection("Hobbies");
 
