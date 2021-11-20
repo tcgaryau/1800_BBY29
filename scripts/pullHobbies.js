@@ -41,6 +41,7 @@ const getNextHobbies = async () => {
     `;
   });
 
+
   cardContainer.innerHTML += template;
 
   let cards = document.querySelectorAll(".card");
