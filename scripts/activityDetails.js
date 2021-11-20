@@ -16,17 +16,13 @@ firebase.auth().onAuthStateChanged((user) => {
           document.querySelector("p").innerHTML = aDescription;
           console.log(arrayActivites);
           console.log(user.uid);
-          console.log(searchJoinedActivity(user.uid, arrayActivites));
-          if (searchJoinedActivity(user.uid, arrayActivites)) {
-            join.classList.remove("active");
-            join.classList.add("unactive");
+          console.log(arrayActivites.includes(user.uid));
+          if (arrayActivites.includes(user.uid)) {
             unjoin.classList.remove("unactive");
             unjoin.classList.add("active");
           } else {
             join.classList.remove("unactive");
             join.classList.add("active");
-            unjoin.classList.remove("active");
-            unjoin.classList.add("unactive");
           }
         } else {
           console.log("No such document!");
@@ -80,8 +76,4 @@ function joinActivity() {
       console.log("Ruh roh");
     }
   });
-}
-
-function searchJoinedActivity(id, array) {
-  return array.includes(id);
 }
