@@ -16,7 +16,7 @@ navBar.classList.add(
   "navbar",
   "navbar-expand-lg",
   "navbar-dark",
-  "bg-dark",
+  "bg-light",
   "fixed-top"
 );
 
