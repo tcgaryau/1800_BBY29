@@ -19,10 +19,10 @@ firebase.auth().onAuthStateChanged((user) => {
           console.log(arrayActivites.includes(user.uid));
           if (arrayActivites.includes(user.uid)) {
             unjoin.classList.remove("unactive");
-            unjoin.classList.add("active");
+            // unjoin.classList.add("active");
           } else {
             join.classList.remove("unactive");
-            join.classList.add("active");
+            // join.classList.add("active");
           }
         } else {
           console.log("No such document!");
@@ -49,8 +49,8 @@ function unjoinActivity() {
       });
 
       join.classList.remove("unactive");
-      join.classList.add("active");
-      unjoin.classList.remove("active");
+      // join.classList.add("active");
+      // unjoin.classList.remove("active");
       unjoin.classList.add("unactive");
     }
   });
@@ -68,10 +68,10 @@ function joinActivity() {
       docRef.update({
         joinedUsers: firebase.firestore.FieldValue.arrayUnion(userID),
       });
-      join.classList.remove("active");
+      // join.classList.remove("active");
       join.classList.add("unactive");
       unjoin.classList.remove("unactive");
-      unjoin.classList.add("active");
+      // unjoin.classList.add("active");
     } else {
       console.log("Ruh roh");
     }
