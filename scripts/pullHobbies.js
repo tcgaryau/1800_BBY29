@@ -19,14 +19,35 @@ const getNextHobbies = async () => {
   let template = "";
   data.docs.forEach((doc) => {
     const hobbies = doc.data();
+    let src = "";
+    switch (hobbies.category) {
+      case "Gaming":
+        src = "gaming.png";
+        break;
+      case "Sports":
+        src = "sports.png";
+        break;
+      case "Foods":
+        src = "food.png";
+        break;
+      case "Arts":
+        src = "arts.png";
+        break;
+      case "Music":
+        src = "music.png";
+        break;
+      case "Miscellaneous":
+        src = "miscellaneous.png";
+        break;
+    }
     template += `
       <div class="card mb-3" id=${doc.id}>
         <div class="row g-0 pt-5">
           <div class="col-md-4">
             <img
-              src="./images/cartoongirlrope.jpg"
+              src="./images/${src}"
               class="img-fluid rounded-start"
-              alt="rope"
+              alt="${hobbies.category}"
             />
           </div>
           <div class="col-md-8">
