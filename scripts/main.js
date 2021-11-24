@@ -79,7 +79,7 @@ function addActivity(doc, template, container) {
 
   template += `
       <div class="card mb-3" id=${doc.id}>
-        <div class="row g-0 pt-5">
+        <div class="row g-0 pt-5 bg-light">
           <div class="col-md-4">
             <img
               src="./images/${src}"
