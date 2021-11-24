@@ -1,4 +1,3 @@
-
 function ajaxGET(path, callback) {
   // Document is loaded now so go and fetch a resource.
   const xhr = new XMLHttpRequest();
@@ -25,12 +24,3 @@ ajaxGET("./xml/navbar.xml", function (data) {
   navBar.innerHTML = data;
 });
 
-//Footer - deleted for now
-/*
-let footer = document.getElementById("footer");
-footer.classList.add("bg-dark", "text-center", "text-lg-start", "fixed-bottom");
-
-ajaxGET("./xml/footer.xml", function (data) {
-  footer.innerHTML = data;
-});
-*/

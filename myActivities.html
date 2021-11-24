@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Hobby Buddies</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
     <meta name="comp1800 Hobby Buddies Code" content="Hobby Buddies" />
     <meta name="Gary Au Felix Ng Dongwan Kang" content="BCIT Group project" />
     <!-- Bootsrap CSS-->
@@ -44,15 +44,19 @@
       href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
     />
     <script src="./scripts/firebaseAPI.js"></script>
+
+    <!-- My style -->
+    <link rel="stylesheet" href="./styles/my_style.css" />
   </head>
-  <body>
+  <body class="bg-light">
     <!-- Navbar -->
     <nav id="navbar"></nav>
 
-
     <div class="text-center pt-5 bg-light rounded-3">
       <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Browse your joined and hosted activities here!</h1>
+        <h1 class="display-5 fw-bold">
+          Browse your joined and hosted activities here!
+        </h1>
         <p class="fs-4">
           Press the buttons to view your joined and hosted activities!
         </p>
@@ -60,21 +64,47 @@
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <div class="col">
-          <button type="button" class="btn btn-primary btn-lg">Joined Activities</button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-primary btn-lg">Hosted Activities</button>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic radio toggle button group"
+        >
+          <input
+            type="radio"
+            class="btn-check"
+            name="btnradio"
+            id="joinActivity"
+            autocomplete="off"
+            checked
+          />
+          <label class="btn btn-outline-primary" for="joinActivity"
+            >Joined Activities</label
+          >
+          <input
+            type="radio"
+            class="btn-check"
+            name="btnradio"
+            id="hostActivity"
+            autocomplete="off"
+          />
+          <label class="btn btn-outline-primary" for="hostActivity"
+            >Hosted Activities</label
+          >
         </div>
       </div>
     </div>
+
+    <!-- The 2 containers for the cards-->
+    <div class="container" id="joinActivityContainer"></div>
+    <div class="container unactive" id="hostActivityContainer"></div>
 
     <!-- Fill this with firestore data -->
 
     <!-- Own Script -->
     <script src="scripts/client.js"></script>
+    <script src="scripts/myActivities.js"></script>
 
     <!-- Bootstrap Script-->
     <script

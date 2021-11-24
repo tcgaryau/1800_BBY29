@@ -1,6 +1,13 @@
 let cardContainer = document.querySelector(".cardContainer");
 let fetching = document.querySelector(".fetching");
 
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+  } else {
+    window.location.replace("login.html");
+  }
+});
+
 // Store last document
 let lastDoc = null;
 
