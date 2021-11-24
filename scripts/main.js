@@ -25,36 +25,59 @@ const getNextHobbies = async () => {
   // output
   let template = "";
   data.docs.forEach((doc) => {
-    const hobbies = doc.data();
-    let src = "";
-    switch (hobbies.category) {
-      case "Gaming":
-        src = "gaming.png";
-        break;
-      case "Sports":
-        src = "sports.png";
-        break;
-      case "Foods":
-        src = "food.png";
-        break;
-      case "Arts":
-        src = "arts.png";
-        break;
-      case "Music":
-        src = "music.png";
-        break;
-      case "Miscellaneous":
-        src = "miscellaneous.png";
-        break;
-    }
+    addActivity(doc, template, cardContainer);
+  })
 
-    let joinedMembers = 1;
+  fetching.classList.remove("active");
+  lastDoc = data.docs[data.docs.length - 1];
 
-    if (typeof hobbies.joinedUsers !== "undefined") {
-      joinedMembers += hobbies.joinedUsers.length;
-    }
-    
-    template += `
+  if (data.empty) {
+    document.removeEventListener("scroll", handleScroll);
+  }
+};
+
+// Wait for DOM to load
+window.addEventListener("DOMContentLoaded", () => getNextHobbies());
+
+const handleScroll = () => {
+  let triggerHeight = window.innerHeight + window.scrollY;
+  console.log(triggerHeight);
+  if (triggerHeight >= document.body.offsetHeight) {
+    getNextHobbies();
+  }
+};
+
+function addActivity(doc, template, container) {
+  const hobbies = doc.data();
+  let src = "";
+  switch (hobbies.category) {
+    case "Gaming":
+      src = "gaming.png";
+      break;
+    case "Sports":
+      src = "sports.png";
+      break;
+    case "Foods":
+      src = "food.png";
+      break;
+    case "Arts":
+      src = "arts.png";
+      break;
+    case "Music":
+      src = "music.png";
+      break;
+    case "Miscellaneous":
+      src = "miscellaneous.png";
+      break;
+  }
+
+  let joinedMembers = 1;
+
+  if (typeof hobbies.joinedUsers !== "undefined") {
+    joinedMembers += hobbies.joinedUsers.length;
+  }
+
+  template += `
       <div class="card mb-3" id=${doc.id}>
         <div class="row g-0 pt-5">
           <div class="col-md-4">
@@ -78,9 +101,7 @@ const getNextHobbies = async () => {
         </div>
       </div>
     `;
-  });
-
-  cardContainer.innerHTML += template;
+  container.innerHTML += template;
 
   let cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
@@ -105,21 +126,6 @@ const getNextHobbies = async () => {
       e.target.style.color = null;
     });
   });
-  lastDoc = data.docs[data.docs.length - 1];
+}
 
-  if (data.empty) {
-    cardContainer.removeEventListener("scroll", handleScroll);
-  }
-};
-
-// Wait for DOM to load
-window.addEventListener("DOMContentLoaded", () => getNextHobbies());
-
-const handleScroll = () => {
-  let fireHeight = cardContainer.scrollTop + cardContainer.offsetHeight;
-  if (fireHeight >= cardContainer.scrollHeight) {
-    getNextHobbies();
-  }
-};
-
-cardContainer.addEventListener("scroll", handleScroll);
+document.addEventListener("scroll", handleScroll);

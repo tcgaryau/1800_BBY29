@@ -95,7 +95,7 @@ function addActivity(doc, template, container) {
         </div>
       </div>
     `;
-    
+
   container.innerHTML += template;
 
   let cards = document.querySelectorAll(".card");

@@ -1,4 +1,4 @@
-.cardContainer {
+/* .cardContainer {
   max-height: 89vh;
   box-sizing: border-box;
   overflow-y: auto;
@@ -6,7 +6,7 @@
 
 .cardContainer::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .fetching {
   display: none;
