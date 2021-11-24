@@ -14,11 +14,12 @@ firebase.auth().onAuthStateChanged((user) => {
           let arrayActivites = doc.data().joinedUsers;
           document.querySelector("h1").innerHTML = aName;
           document.querySelector("p").innerHTML = aDescription;
-          console.log(arrayActivites);
-          console.log(user.uid);
-          console.log(arrayActivites.includes(user.uid));
-          if (arrayActivites.includes(user.uid)) {
-            unjoin.classList.remove("unactive");
+          if (typeof arrayActivites !== "undefined") {
+            if (arrayActivites.includes(user.uid)) {
+              unjoin.classList.remove("unactive");
+            } else {
+              join.classList.remove("unactive");
+            }
           } else {
             join.classList.remove("unactive");
           }
