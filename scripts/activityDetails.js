@@ -32,6 +32,7 @@ firebase.auth().onAuthStateChanged((user) => {
       });
   } else {
     console.log("You are not logged in");
+    window.location.replace("login.html");
   }
 });
 
