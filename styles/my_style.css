@@ -1,7 +1,24 @@
-.active {
-    display:block;
+.cardContainer {
+  max-height: 89vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.cardContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.fetching {
+  display: none;
+}
+
+.fetching.active {
+  display: block;
+  font-size: 2em;
+  text-align: center;
+  margin: 10px 0;
 }
 
 .unactive {
-    display:none;
+  display: none;
 }
