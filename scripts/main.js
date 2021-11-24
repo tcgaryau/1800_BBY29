@@ -47,6 +47,13 @@ const getNextHobbies = async () => {
         src = "miscellaneous.png";
         break;
     }
+
+    let joinedMembers = 1;
+
+    if (typeof hobbies.joinedUsers !== "undefined") {
+      joinedMembers += hobbies.joinedUsers.length;
+    }
+    
     template += `
       <div class="card mb-3" id=${doc.id}>
         <div class="row g-0 pt-5">
@@ -62,13 +69,16 @@ const getNextHobbies = async () => {
               <h1 class="card-title">${hobbies.name}</h1>
               <h5 class="card-title">Description:</h5>
               <p class="card-text">${hobbies.description}</p>
+              <h5 class="card-title">Host:</h5>
+              <p class="card-text">${hobbies.hostName}</p>
+              <h5 class="card-title">Number of joined users.</h5>
+              <p class="card-text">${joinedMembers}<p>
             </div>
           </div>
         </div>
       </div>
     `;
   });
-
 
   cardContainer.innerHTML += template;
 

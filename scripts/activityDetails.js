@@ -2,6 +2,7 @@ let id = localStorage.getItem("currentActivity");
 let docRef = db.collection("Hobbies").doc(id);
 let join = document.querySelector(".join");
 let unjoin = document.querySelector(".unjoin");
+let cardContainer = document.querySelector("#cardContainer");
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -9,11 +10,9 @@ firebase.auth().onAuthStateChanged((user) => {
       .get()
       .then((doc) => {
         if (doc.exists) {
-          let aName = doc.data().name;
-          let aDescription = doc.data().description;
+          let template = "";
+          addActivity(doc, template, cardContainer)
           let arrayActivites = doc.data().joinedUsers;
-          document.querySelector("h1").innerHTML = aName;
-          document.querySelector("p").innerHTML = aDescription;
           if (typeof arrayActivites !== "undefined") {
             if (arrayActivites.includes(user.uid)) {
               unjoin.classList.remove("unactive");
@@ -35,6 +34,63 @@ firebase.auth().onAuthStateChanged((user) => {
     window.location.replace("login.html");
   }
 });
+
+function addActivity(doc, template, container) {
+  const hobbies = doc.data();
+  let src = "";
+  switch (hobbies.category) {
+    case "Gaming":
+      src = "gaming.png";
+      break;
+    case "Sports":
+      src = "sports.png";
+      break;
+    case "Foods":
+      src = "food.png";
+      break;
+    case "Arts":
+      src = "arts.png";
+      break;
+    case "Music":
+      src = "music.png";
+      break;
+    case "Miscellaneous":
+      src = "miscellaneous.png";
+      break;
+  }
+  let joinedMembers = 1;
+
+    if (typeof hobbies.joinedUsers !== "undefined") {
+      joinedMembers += hobbies.joinedUsers.length;
+    }
+
+  template += `
+      <div class="card mb-3" id=${doc.id}>
+        <div class="row g-0 pt-5">
+          <div class="col-md-4">
+            <img
+              src="./images/${src}"
+              class="img-fluid rounded-start"
+              alt="${hobbies.category}"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+            <h1 class="card-title">${hobbies.name}</h1>
+            <h5 class="card-title">Description:</h5>
+            <p class="card-text">${hobbies.description}</p>
+            <h5 class="card-title">Host:</h5>
+            <p class="card-text">${hobbies.hostName}</p>
+            <h5 class="card-title">Number of joined users.</h5>
+            <p class="card-text">${joinedMembers}<p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+  container.innerHTML += template;
+}
 
 function unjoinActivity() {
   firebase.auth().onAuthStateChanged((user) => {

@@ -30,6 +30,7 @@ activityForm.addEventListener("submit", (event) => {
           province: aCity,
           postalCode: ZIP,
           host: userID,
+          hostName: user.displayName,
         }) // Returning the promise to grab the generated ID
         .then((docRef) => {
           let docID = docRef.id;

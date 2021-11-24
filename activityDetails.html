@@ -20,7 +20,7 @@
     />
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="./styles/my_style.css">
+    <link rel="stylesheet" href="./styles/my_style.css" />
     <!-- Firebase-->
     <link
       type="text/css"
@@ -51,28 +51,12 @@
   <body class="bg-light">
     <!-- Navbar -->
     <nav id="navbar"></nav>
+    <br /><br /><br />
 
-    <div class="container-xxl">
-      <div class="card-xxl mb-3">
-        <div class="row pt-5">
-          <div class="col-md-4">
-            <img
-              src="./images/cartoongirlrope.jpg"
-              class="img-fluid rounded-start"
-              alt="rope"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h1 class="card-title"></h1>
-              <h5 class="card-title">Description:</h5>
-              <p class="card-text"></p>
-            </div>
-            <button class="join unactive" onclick="joinActivity()">Join</button>
-            <button class="unjoin unactive" onclick="unjoinActivity()">Unjoin</button>
-          </div>
-        </div>
-      </div>
+    <div class="container" id="cardContainer"></div>
+    <div class="container">
+      <button class="join unactive" onclick="joinActivity()">Join</button>
+      <button class="unjoin unactive" onclick="unjoinActivity()">Unjoin</button>
     </div>
 
     <!-- Own Script -->
