@@ -14,17 +14,12 @@
       crossorigin="anonymous"
     />
 
-    <!-- Our local CSS-->
-    <link href="./styles/my_script.css" rel="stylesheet">
-
     <!-- Google Icons (Material Design)-->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
 
-    <!-- My CSS -->
-    <link rel="stylesheet" href="./styles/my_style.css" />
     <!-- Firebase-->
     <link
       type="text/css"
@@ -50,6 +45,9 @@
       href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
     />
     <script src="./scripts/firebaseAPI.js"></script>
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./styles/my_style.css" />
   </head>
 
   <body class="bg-light">
@@ -59,8 +57,12 @@
 
     <div class="container" id="cardContainer"></div>
     <div class="container">
-      <button class="join btn-lg unactive" onclick="joinActivity()">Join</button>
-      <button class="unjoin btn-lg unactive" onclick="unjoinActivity()">Unjoin</button>
+      <button class="join btn-lg unactive" onclick="joinActivity()">
+        Join
+      </button>
+      <button class="unjoin btn-lg unactive" onclick="unjoinActivity()">
+        Unjoin
+      </button>
     </div>
 
     <!-- Own Script -->
