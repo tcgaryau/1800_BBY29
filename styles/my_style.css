@@ -1,33 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100&family=Roboto&display=swap");
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .container-fluid {
-  background-color: #ffffff;
+  background-color: #f3f0d7;
 }
-.navbar-dark .navbar-brand {
-  color: #000000;
-} 
-.navbar-dark .navbar-brand:hover {
-  color: #FFBF86;
-} 
-.navbar-dark .nav-item .nav-link {
+.navbar-light .navbar-brand {
   color: #000000;
 }
-.navbar-dark .nav-item .nav-link:hover {
-  color: #FFBF86;
+.navbar-light .navbar-brand:hover {
+  color: #b4c6a6;
 }
-.navbar-dark .btn-outline-dark {
+.navbar-light .nav-item .nav-link {
   color: #000000;
-  background-color: #ffffff;
 }
-.navbar-dark .btn-outline-dark:hover {
-  color:#FFBF86;
-  border-color:#FFBF86;
+.navbar-light .nav-item .nav-link:hover {
+  color: #b4c6a6;
+}
+.navbar-light .btn-outline-dark {
+  color: #000000;
+  background-color: #f3f0d7;
+}
+.navbar-light .btn-outline-dark:hover {
+  color: #b4c6a6;
+  border-color: #b4c6a6;
+}
+
+.card:hover {
+  color:#b4c6a6 !important;
+}
+
+.col-md-8 .card-title:hover {
+  color:#b4c6a6;
+}
+
+.btn-group .btn-check{
+  background-color:#f3f0d7;
 }
 
 .bg-green {
-  background-color: #CEE5D0 !important;
+  background-color: #cee5d0 !important;
 }
 
 .bg-light {
-  background-color: #F3F0D7 !important;
+  background-color: #f3f0d7 !important;
 }
 
 .fetching {

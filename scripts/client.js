@@ -15,7 +15,7 @@ let navBar = document.getElementById("navbar");
 navBar.classList.add(
   "navbar",
   "navbar-expand-lg",
-  "navbar-dark",
+  "navbar-light",
   "bg-light",
   "fixed-top"
 );
