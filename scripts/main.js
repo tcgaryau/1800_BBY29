@@ -115,7 +115,7 @@ function addActivity(doc, template, container) {
   cards.forEach((card) => {
     card.addEventListener("mouseenter", function (e) {
       e.target.style.cursor = "pointer";
-      e.target.style.color = "orange";
+      e.target.style.color = "#b4c6a6";
     });
   });
   cards.forEach((card) => {

@@ -28,16 +28,18 @@ body {
   border-color: #b4c6a6;
 }
 
-.card:hover {
-  color:#b4c6a6 !important;
+.btn-outline-primary {
+  border-color : #000000;
+  color : #000000;
 }
 
-.col-md-8 .card-title:hover {
-  color:#b4c6a6;
+.btn-outline-primary:hover {
+  color: #b4c6a6;
+  border-color: #b4c6a6;
 }
 
-.btn-group .btn-check{
-  background-color:#f3f0d7;
+.btn-outline-primary:checked{
+  background-color:#b4c6a6 !important;
 }
 
 .bg-green {
