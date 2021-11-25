@@ -36,9 +36,6 @@ const getNextHobbies = async () => {
   }
 };
 
-// Wait for DOM to load
-window.addEventListener("DOMContentLoaded", () => getNextHobbies());
-
 const handleScroll = () => {
   let triggerHeight = window.innerHeight + window.scrollY;
   console.log(triggerHeight);
@@ -129,3 +126,6 @@ function addActivity(doc, template, container) {
 }
 
 document.addEventListener("scroll", handleScroll);
+
+// Wait for DOM to load
+window.addEventListener("DOMContentLoaded", () => getNextHobbies());
