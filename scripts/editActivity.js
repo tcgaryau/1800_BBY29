@@ -11,7 +11,7 @@ firebase.auth().onAuthStateChanged((user) => {
             .then(function (docRef) {
 
                 document.getElementById("activityName").value = docRef.data().name;
-                activityCategory.options[activityCategory.selectedIndex].text = docRef.data().category;
+                document.getElementById("activityCategory").value = docRef.data().category;
                 document.getElementById("descriptionText").value = docRef.data().description;
 
                 document.getElementById("datetimepicker").value = docRef.data().time;
