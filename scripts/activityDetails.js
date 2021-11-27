@@ -14,14 +14,18 @@ firebase.auth().onAuthStateChanged((user) => {
           let template = "";
           addActivity(doc, template, cardContainer);
           let arrayActivites = doc.data().joinedUsers;
-          if (typeof arrayActivites !== "undefined") {
-            if (arrayActivites.includes(user.uid)) {
-              unjoin.classList.remove("unactive");
+          if (doc.data().host == user.uid) {
+            edit.classList.remove("unactive");
+          } else {
+            if (typeof arrayActivites !== "undefined") {
+              if (arrayActivites.includes(user.uid)) {
+                unjoin.classList.remove("unactive");
+              } else {
+                join.classList.remove("unactive");
+              }
             } else {
               join.classList.remove("unactive");
             }
-          } else {
-            join.classList.remove("unactive");
           }
         } else {
           console.log("No such document!");
@@ -36,27 +40,27 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    docRef
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          if (doc.data().host == user.uid) {
-            edit.classList.remove("unactive");
-          }
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch((error) => {
-        console.log("Error getting document:", error);
-      });
-  } else {
-    console.log("You are not logged in");
-    window.location.replace("login.html");
-  }
-});
+// firebase.auth().onAuthStateChanged((user) => {
+//   if (user) {
+//     docRef
+//       .get()
+//       .then((doc) => {
+//         if (doc.exists) {
+//           if (doc.data().host == user.uid) {
+//             edit.classList.remove("unactive");
+//           }
+//         } else {
+//           console.log("No such document!");
+//         }
+//       })
+//       .catch((error) => {
+//         console.log("Error getting document:", error);
+//       });
+//   } else {
+//     console.log("You are not logged in");
+//     window.location.replace("login.html");
+//   }
+// });
 
 function editActivity() {
   window.location.href = "./editActivity.html";
