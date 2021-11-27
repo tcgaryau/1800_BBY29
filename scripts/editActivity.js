@@ -2,7 +2,7 @@ let activityCategory = document.getElementById("activityCategory");
 const city = document.getElementById("city");
 const activityForm = document.querySelector("#activityForm");
 let id = localStorage.getItem("currentActivity");
-
+console.log(id);
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         db.collection("Hobbies")
@@ -16,7 +16,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
                 document.getElementById("datetimepicker").value = docRef.data().time;
                 document.getElementById("address").value = docRef.data().location;
-                city.options[city.selectedIndex].value = docRef.data().province;
+                document.getElementById("city").value = docRef.data().province;
                 document.getElementById("zip").value = docRef.data().postalCode;
                 console.log(document.getElementById("activityName").value);
 
@@ -54,19 +54,20 @@ activityForm.addEventListener("submit", (event) => {
                     host: userID,
                     hostName: user.displayName,
                 }) // Returning the promise to grab the generated ID
-                // .then((docRef) => {
-                //     let docID = docRef.id;
-                //     db.collection("users")
-                //         .doc(userID)
-                //         .update({
-                //             hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
-                //         });
-                //     localStorage.setItem("currentActivity", docID);
-                //     window.location.replace("activityDetails.html");
-                // })
-                // .catch((error) => {
-                //     console.log("Error adding document: ", error);
-                // });
+                .then((docRef) => {
+                    let docID = docRef.id;
+                    db.collection("users")
+                        .doc(userID)
+                        .update({
+                            hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
+                            
+                        });
+                    localStorage.setItem("currentActivity", docID);
+                    window.location.replace("activityDetails.html");
+                })
+                .catch((error) => {
+                    console.log("Error adding document: ", error);
+                });
         } else {
             console.log("No user is signed in");
         }

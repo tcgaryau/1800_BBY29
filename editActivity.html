@@ -1,147 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>Hobby Buddies</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <meta name="comp1800 Hobby Buddies Code" content="Hobby Buddies" />
     <meta name="Gary Au Felix Ng Dongwan Kang" content="BCIT Group project" />
     <!-- Bootsrap CSS-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
     <!-- Google Icons (Material Design)-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-    
+
     <!-- Firebase-->
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-    />
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-    />
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="./scripts/firebaseAPI.js"></script>
-    
+
     <!-- My style -->
     <link rel="stylesheet" href="./styles/my_style.css" />
 
-  </head>
-  <body class="bg-green">
+</head>
+
+<body class="bg-green">
     <nav id="navbar"></nav>
     <!-- Create Activity Form-->
 
     <div class="container-lg pt-5">
-      <div class="container text-center fw-bold fst-italic pt-5">
-        <h1>Edit your activity</h1>
-      </div>
-      <form class="row g-3" id="activityForm" method="post">
-        <div class="col-md-6">
-          <label for="activityCategory" class="form-label"
-            >Activity Category</label
-          >
-          <select
-            id="activityCategory"
-            class="form-select"
-            aria-label="activity category"
-          >
-            <option selected>Gaming</option>
-            <option value = "Sports">Sports</option>
-            <option value = "Foods">Foods</option>
-            <option value = "Arts">Arts</option>
-            <option value = "Music">Music</option>
-            <option value = "Miscellaneous">Miscellaneous</option>
-            
-          </select>
+        <div class="container text-center fw-bold fst-italic pt-5">
+            <h1>Edit your activity</h1>
         </div>
+        <form class="row g-3" id="activityForm" method="post">
+            <div class="col-md-6">
+                <label for="activityCategory" class="form-label">Activity Category</label>
+                <select id="activityCategory" class="form-select" aria-label="activity category">
+                    <option selected value="Gaming">Gaming</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Foods">Foods</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Music">Music</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
 
-        <div class="col-md-6">
-          <label for="activityName" class="form-label">Activity Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="activityName"
-            placeholder="Enter the Event Name"
-          />
-        </div>
-        <div class="col-md-12">
-          <label for="descriptionText" class="form-label">Description</label>
-          <textarea
-            class="form-control"
-            id="descriptionText"
-            rows="5"
-          ></textarea>
-        </div>
-        <div class="col-md-6">
-          <label for="maxPeople" class="form-label"
-            >How many people can join?</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter the maximum # of people"
-            id="maxPeople"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="datetimepicker" class="form-label"
-            >Select Date and Time</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            value="22/12/2020, 14:12:56"
-            id="datetimepicker"
-          />
-        </div>
-        <div class="col-md-6">
-          <label for="validationDefault03" class="form-label">Address</label>
-          <input type="text" class="form-control" id="address" />
-        </div>
-        <div class="col-md-3">
-          <label for="validationDefault04" class="form-label">Province</label>
-          <select class="form-select" id="city" required>
-            <option selected>BC</option>
-            <option>2</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <label for="validationDefault05" class="form-label"
-            >Postal Code</label
-          >
-          <input type="text" class="form-control" id="zip" />
-        </div>
+                </select>
+            </div>
 
-        <div class="col-12">
-          <button class="btn btn-primary" id="submission">
-            Submit
-          </button>
-        </div>
-      </form>
+            <div class="col-md-6">
+                <label for="activityName" class="form-label">Activity Name</label>
+                <input type="text" class="form-control" id="activityName" placeholder="Enter the Event Name" />
+            </div>
+            <div class="col-md-12">
+                <label for="descriptionText" class="form-label">Description</label>
+                <textarea class="form-control" id="descriptionText" rows="5"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label for="maxPeople" class="form-label">How many people can join?</label>
+                <input type="text" class="form-control" placeholder="Enter the maximum # of people" id="maxPeople" />
+            </div>
+            <div class="col-md-6">
+                <label for="datetimepicker" class="form-label">Select Date and Time</label>
+                <input type="text" class="form-control" value="22/12/2020, 14:12:56" id="datetimepicker" />
+            </div>
+            <div class="col-md-6">
+                <label for="validationDefault03" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" />
+            </div>
+            <div class="col-md-3">
+                <label for="validationDefault04" class="form-label">Province</label>
+                <select class="form-select" id="city" required>
+                    <option selected value="BC">BC</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="validationDefault05" class="form-label">Postal Code</label>
+                <input type="text" class="form-control" id="zip" />
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="submission">
+                    Submit
+                </button>
+            </div>
+        </form>
     </div>
 
     <!-- Own Script -->
@@ -149,20 +103,15 @@
     <script src="./scripts/editActivity.js"></script>
 
     <!-- Bootstrap Script-->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+</body>
+
 </html>

@@ -38,6 +38,7 @@ activityForm.addEventListener("submit", (event) => {
             .doc(userID)
             .update({
               hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
+              joinedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
             });
           localStorage.setItem("currentActivity", docID);
           window.location.replace("activityDetails.html");
@@ -50,3 +51,5 @@ activityForm.addEventListener("submit", (event) => {
     }
   });
 });
+
+
