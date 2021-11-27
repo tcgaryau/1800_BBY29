@@ -14,10 +14,13 @@ firebase.auth().onAuthStateChanged((user) => {
           let template = "";
           addActivity(doc, template, cardContainer);
           let arrayActivites = doc.data().joinedUsers;
+          //Checking if the user created this activity
           if (doc.data().host == user.uid) {
             edit.classList.remove("unactive");
           } else {
+            // Check if this array exists first.
             if (typeof arrayActivites !== "undefined") {
+              // Check if the user is in the joined activity array.
               if (arrayActivites.includes(user.uid)) {
                 unjoin.classList.remove("unactive");
               } else {
