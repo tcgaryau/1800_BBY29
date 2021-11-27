@@ -21,5 +21,25 @@ navBar.classList.add(
 
 ajaxGET("./xml/navbar.xml", function (data) {
   navBar.innerHTML = data;
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      let logout = document.createElement("button");
+      logout.setAttribute("class", "btn btn-outline-dark");
+      logout.setAttribute("type", "button");
+      logout.setAttribute("id", "logout");
+      logout.innerHTML = "Log out";
+      document.querySelector("#navbarNav").appendChild(logout);
+      document.querySelector("#logout").addEventListener("click", () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            console.log("successfully signed out");
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    }
+  });
 });
-

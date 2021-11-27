@@ -8,6 +8,14 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
+const handleScroll = () => {
+  let triggerHeight = window.innerHeight + window.scrollY;
+  console.log(triggerHeight);
+  if (triggerHeight >= document.body.offsetHeight) {
+    getNextHobbies();
+  }
+};
+
 // Store last document
 let lastDoc = null;
 
@@ -26,21 +34,13 @@ const getNextHobbies = async () => {
   let template = "";
   data.docs.forEach((doc) => {
     addActivity(doc, template, cardContainer);
-  })
+  });
 
   fetching.classList.remove("active");
   lastDoc = data.docs[data.docs.length - 1];
 
   if (data.empty) {
     document.removeEventListener("scroll", handleScroll);
-  }
-};
-
-const handleScroll = () => {
-  let triggerHeight = window.innerHeight + window.scrollY;
-  console.log(triggerHeight);
-  if (triggerHeight >= document.body.offsetHeight) {
-    getNextHobbies();
   }
 };
 
