@@ -20,12 +20,15 @@ body {
   color: #b4c6a6;
 }
 .navbar-light .btn-outline-dark {
-  color: #000000;
-  background-color: #f3f0d7;
+  background-color:#b4c6a6;
+  border-color:#f3f0d7;
+  color:#000000;
 }
 .navbar-light .btn-outline-dark:hover {
-  color: #b4c6a6;
-  border-color: #b4c6a6;
+  background-color:#f3f0d7;
+  border-color:#b4c6a6;
+  color:#000000;
+  box-shadow: 0 0 0 0.2rem #b4c6a6;
 }
 
 .btn-outline-primary {
@@ -82,6 +85,36 @@ body {
   border-color:#f3f0d7;
   color:#000000;
   box-shadow:0 0 0 0.25rem #f3f0d7;
+}
+
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  background-color:#f3f0d7;
+  border-color:#b4c6a6;
+  color:#000000;
+  box-shadow: 0 0 0 0.25rem #b4c6a6;
+}
+
+.btn-dark {
+  background-color: #b4c6a6;
+}
+
+.btn-dark:hover {
+  background-color:#b4c6a6;
+  border-color:#f3f0d7;
+  color:#000000;
+}
+
+.btn-dark:checked {
+  background-color:#f3f0d7;
+  border-color:#b4c6a6;
+  color:#000000;
+}
+
+.btn-check:focus + .btn-dark, .btn-dark:focus {
+  background-color:#f3f0d7;
+  border-color:#b4c6a6;
+  color:#000000;
+  box-shadow: 0 0 0 0.25rem #b4c6a6;
 }
 
 .bg-green {
