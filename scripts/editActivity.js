@@ -39,11 +39,11 @@ activityForm.addEventListener("submit", (event) => {
         if (user) {
             //if user is logged in
             let userID = user.uid;
-            let newActivity = db.collection("Hobbies");
+            let newActivity = db.collection("Hobbies").doc(id);
 
             //Adding activity into firestore
             newActivity
-                .add({
+                .update({
                     name: aName,
                     category: category,
                     description: description,
@@ -54,19 +54,19 @@ activityForm.addEventListener("submit", (event) => {
                     host: userID,
                     hostName: user.displayName,
                 }) // Returning the promise to grab the generated ID
-                .then((docRef) => {
-                    let docID = docRef.id;
-                    db.collection("users")
-                        .doc(userID)
-                        .update({
-                            hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
-                        });
-                    localStorage.setItem("currentActivity", docID);
-                    window.location.replace("activityDetails.html");
-                })
-                .catch((error) => {
-                    console.log("Error adding document: ", error);
-                });
+                // .then((docRef) => {
+                //     let docID = docRef.id;
+                //     db.collection("users")
+                //         .doc(userID)
+                //         .update({
+                //             hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
+                //         });
+                //     localStorage.setItem("currentActivity", docID);
+                //     window.location.replace("activityDetails.html");
+                // })
+                // .catch((error) => {
+                //     console.log("Error adding document: ", error);
+                // });
         } else {
             console.log("No user is signed in");
         }
