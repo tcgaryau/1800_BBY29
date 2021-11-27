@@ -85,7 +85,7 @@ function addActivity(doc, template, container) {
             <p class="card-text">${hobbies.description}</p>
             <h5 class="card-title">Host:</h5>
             <p class="card-text">${hobbies.hostName}</p>
-            <h5 class="card-title">Number of joined users.</h5>
+            <h5 class="card-title">Number of users:</h5>
             <p class="card-text">${joinedMembers}<p>
             </div>
           </div>
