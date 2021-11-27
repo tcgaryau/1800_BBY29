@@ -35,6 +35,10 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
+function editActivity() {
+  window.location.href = "./editActivity.html";
+}
+
 function addActivity(doc, template, container) {
   const hobbies = doc.data();
   let src = "";
@@ -131,3 +135,4 @@ function joinActivity() {
     }
   });
 }
+
