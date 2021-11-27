@@ -38,8 +38,9 @@ activityForm.addEventListener("submit", (event) => {
             .doc(userID)
             .update({
               hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
-              joinedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
+              
             });
+          db.collection
           localStorage.setItem("currentActivity", docID);
           window.location.replace("activityDetails.html");
         })
