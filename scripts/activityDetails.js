@@ -2,6 +2,7 @@ let id = localStorage.getItem("currentActivity");
 let docRef = db.collection("Hobbies").doc(id);
 let join = document.querySelector(".join");
 let unjoin = document.querySelector(".unjoin");
+let edit = document.querySelector(".edit");
 let cardContainer = document.querySelector("#cardContainer");
 
 firebase.auth().onAuthStateChanged((user) => {
@@ -11,7 +12,7 @@ firebase.auth().onAuthStateChanged((user) => {
       .then((doc) => {
         if (doc.exists) {
           let template = "";
-          addActivity(doc, template, cardContainer)
+          addActivity(doc, template, cardContainer);
           let arrayActivites = doc.data().joinedUsers;
           if (typeof arrayActivites !== "undefined") {
             if (arrayActivites.includes(user.uid)) {
@@ -21,6 +22,28 @@ firebase.auth().onAuthStateChanged((user) => {
             }
           } else {
             join.classList.remove("unactive");
+          }
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  } else {
+    console.log("You are not logged in");
+    window.location.replace("login.html");
+  }
+});
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    docRef
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          if (doc.data().host == user.uid) {
+            edit.classList.remove("unactive");
           }
         } else {
           console.log("No such document!");
@@ -64,9 +87,9 @@ function addActivity(doc, template, container) {
   }
   let joinedMembers = 1;
 
-    if (typeof hobbies.joinedUsers !== "undefined") {
-      joinedMembers += hobbies.joinedUsers.length;
-    }
+  if (typeof hobbies.joinedUsers !== "undefined") {
+    joinedMembers += hobbies.joinedUsers.length;
+  }
 
   template += `
       <div class="card mb-3" id=${doc.id}>
@@ -92,7 +115,7 @@ function addActivity(doc, template, container) {
         </div>
       </div>
     `;
-    
+
   container.innerHTML += template;
 }
 
@@ -135,4 +158,3 @@ function joinActivity() {
     }
   });
 }
-
