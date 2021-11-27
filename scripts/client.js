@@ -35,6 +35,7 @@ ajaxGET("./xml/navbar.xml", function (data) {
           .signOut()
           .then(function () {
             console.log("successfully signed out");
+            location.reload();
           })
           .catch(function (error) {
             console.log(error);

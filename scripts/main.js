@@ -10,7 +10,6 @@ firebase.auth().onAuthStateChanged((user) => {
 
 const handleScroll = () => {
   let triggerHeight = window.innerHeight + window.scrollY;
-  console.log(triggerHeight);
   if (triggerHeight >= document.body.offsetHeight) {
     getNextHobbies();
   }
