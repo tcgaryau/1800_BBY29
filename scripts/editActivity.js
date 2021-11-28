@@ -8,14 +8,15 @@ window.addEventListener("DOMContentLoaded", () => {
     if (user) {
       db.collection("Hobbies")
         .doc(id)
-        .get()
-        .then(function (docRef) {
+        //.get()
+        .onSnapshot((docRef) =>{
+        //.then(function (docRef) {
           document.getElementById("activityName").value = docRef.data().name;
           document.getElementById("activityCategory").value =
             docRef.data().category;
           document.getElementById("descriptionText").value =
             docRef.data().description;
-
+          document.getElementById("maxPeople").value=docRef.data().maxUsers;
           document.getElementById("datetimepicker").value = docRef.data().time;
           document.getElementById("address").value = docRef.data().location;
           document.getElementById("city").value = docRef.data().province;
