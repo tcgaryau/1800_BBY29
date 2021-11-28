@@ -2,21 +2,22 @@ let activityCategory = document.getElementById("activityCategory");
 const city = document.getElementById("city");
 const activityForm = document.querySelector("#activityForm");
 let id = localStorage.getItem("currentActivity");
+let deleteButton = document.querySelector("#Delete");
 
 window.addEventListener("DOMContentLoaded", () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       db.collection("Hobbies")
         .doc(id)
-        //.get()
-        .onSnapshot((docRef) =>{
-        //.then(function (docRef) {
+        .get()
+        // .onSnapshot((docRef) =>{
+        .then(function (docRef) {
           document.getElementById("activityName").value = docRef.data().name;
           document.getElementById("activityCategory").value =
             docRef.data().category;
           document.getElementById("descriptionText").value =
             docRef.data().description;
-          document.getElementById("maxPeople").value=docRef.data().maxUsers;
+          document.getElementById("maxPeople").value = docRef.data().maxUsers;
           document.getElementById("datetimepicker").value = docRef.data().time;
           document.getElementById("address").value = docRef.data().location;
           document.getElementById("city").value = docRef.data().province;
@@ -24,6 +25,34 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
   });
+});
+
+deleteButton.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  let currentHobby = await db.collection("Hobbies").doc(id);
+  let currentRef = await currentHobby.get();
+
+  let joinedUsersArray = currentRef.data().joinedUsers;
+  if (typeof joinedUsersArray !== "undefined") {
+    joinedUsersArray.forEach(async (r) => {
+      let user = await db.collection("users").doc(r);
+      user.update({
+        joinedActivity: firebase.firestore.FieldValue.arrayRemove(id),
+      });
+    });
+  }
+
+  await db
+    .collection("users")
+    .doc(currentRef.data().host)
+    .update({
+      hostedActivity: firebase.firestore.FieldValue.arrayRemove(id),
+    });
+
+  await currentHobby.delete();
+
+  window.location.href = "./index.html";
 });
 
 activityForm.addEventListener("submit", (event) => {

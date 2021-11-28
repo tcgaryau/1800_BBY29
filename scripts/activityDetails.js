@@ -15,6 +15,7 @@ firebase.auth().onAuthStateChanged((user) => {
           addActivity(doc, template, cardContainer);
           let arrayActivites = doc.data().joinedUsers;
           //Checking if the user created this activity
+          checkJoineduser();
           if (doc.data().host == user.uid) {
             edit.classList.remove("unactive");
           } else {
@@ -43,27 +44,18 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-// firebase.auth().onAuthStateChanged((user) => {
-//   if (user) {
-//     docRef
-//       .get()
-//       .then((doc) => {
-//         if (doc.exists) {
-//           if (doc.data().host == user.uid) {
-//             edit.classList.remove("unactive");
-//           }
-//         } else {
-//           console.log("No such document!");
-//         }
-//       })
-//       .catch((error) => {
-//         console.log("Error getting document:", error);
-//       });
-//   } else {
-//     console.log("You are not logged in");
-//     window.location.replace("login.html");
-//   }
-// });
+function checkJoineduser() {
+  docRef.onSnapshot((doc) => {
+    let joinedMembers = document.querySelector("#joinedMembers");
+    let joinedMembersNum = 1;
+
+    if (typeof doc.data().joinedUsers !== "undefined") {
+      joinedMembersNum += doc.data().joinedUsers.length;
+    }
+
+    joinedMembers.innerHTML = joinedMembersNum;
+  });
+}
 
 function editActivity() {
   window.location.href = "./editActivity.html";
@@ -116,7 +108,7 @@ function addActivity(doc, template, container) {
             <h5 class="card-title">Host:</h5>
             <p class="card-text">${hobbies.hostName}</p>
             <h5 class="card-title">Number of users:</h5>
-            <p class="card-text">${joinedMembers}<p>
+            <p class="card-text" id="joinedMembers">${joinedMembers}<p>
             </div>
           </div>
         </div>
