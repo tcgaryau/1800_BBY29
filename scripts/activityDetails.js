@@ -4,6 +4,7 @@ let join = document.querySelector(".join");
 let unjoin = document.querySelector(".unjoin");
 let cardContainer = document.querySelector("#cardContainer");
 
+// Checking if the user is logged in, redirects to log in if they are not logged in.
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     docRef
