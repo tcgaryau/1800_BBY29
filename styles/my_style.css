@@ -139,3 +139,7 @@ body {
 .unactive {
   display: none;
 }
+
+a:hover {
+  color: #b4c6a6;
+}
