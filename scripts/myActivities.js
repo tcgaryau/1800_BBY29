@@ -43,7 +43,7 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 function addActivity(doc, template, container) {
-  const hobbies = doc.data();
+  let hobbies = doc.data();
   let src = "";
   switch (hobbies.category) {
     case "Gaming":
@@ -67,9 +67,9 @@ function addActivity(doc, template, container) {
   }
   let joinedMembers = 1;
 
-    if (typeof hobbies.joinedUsers !== "undefined") {
-      joinedMembers += hobbies.joinedUsers.length;
-    }
+  if (typeof hobbies.joinedUsers !== "undefined") {
+    joinedMembers += hobbies.joinedUsers.length;
+  }
 
   template += `
       <div class="card mb-3" id=${doc.id}>
@@ -88,7 +88,7 @@ function addActivity(doc, template, container) {
             <p class="card-text">${hobbies.description}</p>
             <h5 class="card-title">Host:</h5>
             <p class="card-text">${hobbies.hostName}</p>
-            <h5 class="card-title">Number of joined users.</h5>
+            <h5 class="card-title">Number of users:</h5>
             <p class="card-text">${joinedMembers}<p>
             </div>
           </div>

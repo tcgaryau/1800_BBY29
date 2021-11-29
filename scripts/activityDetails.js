@@ -2,6 +2,7 @@ let id = localStorage.getItem("currentActivity");
 let docRef = db.collection("Hobbies").doc(id);
 let join = document.querySelector(".join");
 let unjoin = document.querySelector(".unjoin");
+let edit = document.querySelector(".edit");
 let cardContainer = document.querySelector("#cardContainer");
 
 // Checking if the user is logged in, redirects to log in if they are not logged in.
@@ -12,16 +13,24 @@ firebase.auth().onAuthStateChanged((user) => {
       .then((doc) => {
         if (doc.exists) {
           let template = "";
-          addActivity(doc, template, cardContainer)
+          addActivity(doc, template, cardContainer);
           let arrayActivites = doc.data().joinedUsers;
-          if (typeof arrayActivites !== "undefined") {
-            if (arrayActivites.includes(user.uid)) {
-              unjoin.classList.remove("unactive");
+          //Checking if the user created this activity
+          checkJoineduser();
+          if (doc.data().host == user.uid) {
+            edit.classList.remove("unactive");
+          } else {
+            // Check if this array exists first.
+            if (typeof arrayActivites !== "undefined") {
+              // Check if the user is in the joined activity array.
+              if (arrayActivites.includes(user.uid)) {
+                unjoin.classList.remove("unactive");
+              } else {
+                join.classList.remove("unactive");
+              }
             } else {
               join.classList.remove("unactive");
             }
-          } else {
-            join.classList.remove("unactive");
           }
         } else {
           console.log("No such document!");
@@ -35,6 +44,23 @@ firebase.auth().onAuthStateChanged((user) => {
     window.location.replace("login.html");
   }
 });
+
+function checkJoineduser() {
+  docRef.onSnapshot((doc) => {
+    let joinedMembers = document.querySelector("#joinedMembers");
+    let joinedMembersNum = 1;
+
+    if (typeof doc.data().joinedUsers !== "undefined") {
+      joinedMembersNum += doc.data().joinedUsers.length;
+    }
+
+    joinedMembers.innerHTML = joinedMembersNum;
+  });
+}
+
+function editActivity() {
+  window.location.href = "./editActivity.html";
+}
 
 function addActivity(doc, template, container) {
   const hobbies = doc.data();
@@ -61,9 +87,9 @@ function addActivity(doc, template, container) {
   }
   let joinedMembers = 1;
 
-    if (typeof hobbies.joinedUsers !== "undefined") {
-      joinedMembers += hobbies.joinedUsers.length;
-    }
+  if (typeof hobbies.joinedUsers !== "undefined") {
+    joinedMembers += hobbies.joinedUsers.length;
+  }
 
   template += `
       <div class="card mb-3" id=${doc.id}>
@@ -82,14 +108,14 @@ function addActivity(doc, template, container) {
             <p class="card-text">${hobbies.description}</p>
             <h5 class="card-title">Host:</h5>
             <p class="card-text">${hobbies.hostName}</p>
-            <h5 class="card-title">Number of joined users.</h5>
-            <p class="card-text">${joinedMembers}<p>
+            <h5 class="card-title">Number of users:</h5>
+            <p class="card-text" id="joinedMembers">${joinedMembers}<p>
             </div>
           </div>
         </div>
       </div>
     `;
-    
+
   container.innerHTML += template;
 }
 

@@ -12,6 +12,7 @@ activityForm.addEventListener("submit", (event) => {
   let location = document.getElementById("address").value;
   let aCity = city.options[city.selectedIndex].value;
   let ZIP = document.getElementById("zip").value;
+  let max = document.getElementById("maxPeople").value;
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -31,6 +32,7 @@ activityForm.addEventListener("submit", (event) => {
           postalCode: ZIP,
           host: userID,
           hostName: user.displayName,
+          maxUsers: max,
         }) // Returning the promise to grab the generated ID
         .then((docRef) => {
           let docID = docRef.id;
@@ -38,7 +40,9 @@ activityForm.addEventListener("submit", (event) => {
             .doc(userID)
             .update({
               hostedActivity: firebase.firestore.FieldValue.arrayUnion(docID),
+              
             });
+          db.collection
           localStorage.setItem("currentActivity", docID);
           window.location.replace("activityDetails.html");
         })
@@ -50,3 +54,5 @@ activityForm.addEventListener("submit", (event) => {
     }
   });
 });
+
+
