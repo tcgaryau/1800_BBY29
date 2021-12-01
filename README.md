@@ -41,7 +41,6 @@ Content of the project folder:
 └── storage.rules            # Firebase generated file
 
 It has the following subfolders and files:
-c
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
     /arts.png                # 
@@ -74,9 +73,3 @@ Firebase hosting files:
 ├── firebase.json            # Firebase generated file
 ├── firestore.indexes.json   # Firebase generated file
 └── firestore.rules          # Firebase generated file
-
-
-```
-
-Tips for file naming files and folders:
-* use lowercase with no spaces
