@@ -1,9 +1,13 @@
+//Declaring Variables.
 let activityCategory = document.getElementById("activityCategory");
 const city = document.getElementById("city");
 const activityForm = document.querySelector("#activityForm");
 let id = localStorage.getItem("currentActivity");
 let deleteButton = document.querySelector("#Delete");
 
+/**
+ * This loads when HTML page is loaded. It reads from Firebase to populate the Form.
+ */
 window.addEventListener("DOMContentLoaded", () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -27,6 +31,9 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/**
+ *Adds an event listener for the submit button to delete the Firebase Collection in Hobbies and remove from the hostedActivity array in user.
+ */
 deleteButton.addEventListener("click", async (e) => {
   e.preventDefault();
 
@@ -55,6 +62,9 @@ deleteButton.addEventListener("click", async (e) => {
   window.location.href = "./index.html";
 });
 
+/**
+ * Adds an event listener for the submit button to update the Firebase Collection in Hobbies and user.
+ */
 activityForm.addEventListener("submit", (event) => {
   event.preventDefault();
   let aName = document.getElementById("activityName").value;

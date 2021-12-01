@@ -1,5 +1,9 @@
+// Declaring the user
 var ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
 
+/**
+ * Function that logs the user in and also adds it into our Firestore collection for users.
+ */
 var uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function (authResult, redirectUrl) {
@@ -19,7 +23,6 @@ var uiConfig = {
             // hostedActivity: hostedActivity,
           })
           .then(function () {
-            console.log("Next victim added to firestore");
             window.location.assign("main.html");
           })
           .catch(function (error) {

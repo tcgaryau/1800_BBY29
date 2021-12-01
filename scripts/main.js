@@ -1,6 +1,10 @@
+//Declaring variables.
 let cardContainer = document.querySelector(".cardContainer");
 let fetching = document.querySelector(".fetching");
 
+/**
+ * Checks if the user is logged in. If they are not it will redirect them to the login page.
+ */
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
   } else {
@@ -8,6 +12,9 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
+/**
+ * Function that checks if the user is at the bottom of the page. Calls getNextHobbies() if they are at the bottom of the page.
+ */
 const handleScroll = () => {
   let triggerHeight = window.innerHeight + window.scrollY;
   if (triggerHeight >= document.body.offsetHeight) {
@@ -18,6 +25,9 @@ const handleScroll = () => {
 // Store last document
 let lastDoc = null;
 
+/**
+ * Function that reads 3 activities from our Firebase document Hobbies.
+ */
 const getNextHobbies = async () => {
   fetching.classList.add("active");
 
@@ -28,8 +38,6 @@ const getNextHobbies = async () => {
     .limit(3);
   const data = await ref.get();
 
-  //src image
-  // output
   let template = "";
   data.docs.forEach((doc) => {
     addActivity(doc, template, cardContainer);
@@ -43,6 +51,12 @@ const getNextHobbies = async () => {
   }
 };
 
+/**
+ * Function to add an activity into the cardContainer. It reads from a collection in Firebase.
+ * @param {Object} doc is a reference to a Firebase Collection
+ * @param {String} template is a String to be editted
+ * @param {Object} container is a reference to the HTML element to add
+ */
 function addActivity(doc, template, container) {
   const hobbies = doc.data();
   let src = "";
@@ -69,10 +83,12 @@ function addActivity(doc, template, container) {
 
   let joinedMembers = 1;
 
+  // Checks joinedUser to make sure this array exists.
   if (typeof hobbies.joinedUsers !== "undefined") {
     joinedMembers += hobbies.joinedUsers.length;
   }
 
+  // Adds a card into the container.
   template += `
       <div class="card mb-3" id=${doc.id}>
         <div class="row g-0 pt-5 bg-light">
@@ -99,6 +115,7 @@ function addActivity(doc, template, container) {
     `;
   container.innerHTML += template;
 
+  // Checks for all card class and adds an id from Firebase into their attribute.
   let cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     card.addEventListener("click", function (e) {
@@ -109,14 +126,18 @@ function addActivity(doc, template, container) {
     });
   });
 
+  // Removes the fetching text.
   fetching.classList.remove("active");
 
+  // Adds a mouse pointer to all the cards.
   cards.forEach((card) => {
     card.addEventListener("mouseenter", function (e) {
       e.target.style.cursor = "pointer";
       e.target.style.color = "#b4c6a6";
     });
   });
+
+  // Removes the mouse pointer when it exists the card.
   cards.forEach((card) => {
     card.addEventListener("mouseleave", function (e) {
       e.target.style.color = null;
@@ -124,6 +145,7 @@ function addActivity(doc, template, container) {
   });
 }
 
+// Checks if it has hit the bottom of the page.
 document.addEventListener("scroll", handleScroll);
 
 // Wait for DOM to load

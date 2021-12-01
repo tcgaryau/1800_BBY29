@@ -1,3 +1,6 @@
+/**
+ * Declaring variables to be used
+ */
 let id = localStorage.getItem("currentActivity");
 let docRef = db.collection("Hobbies").doc(id);
 let join = document.querySelector(".join");
@@ -5,7 +8,9 @@ let unjoin = document.querySelector(".unjoin");
 let edit = document.querySelector(".edit");
 let cardContainer = document.querySelector("#cardContainer");
 
-// Checking if the user is logged in, redirects to log in if they are not logged in.
+/**
+ * Checking if the user is logged in, redirects to log in if they are not logged in.
+ */
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     docRef
@@ -45,6 +50,9 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
+/**
+ * Function to check in real time if the joined user has changed.
+ */
 function checkJoineduser() {
   docRef.onSnapshot((doc) => {
     let joinedMembers = document.querySelector("#joinedMembers");
@@ -58,10 +66,19 @@ function checkJoineduser() {
   });
 }
 
+/**
+ * Function for the button in editActivity.html to switch the page.
+ */
 function editActivity() {
   window.location.href = "./editActivity.html";
 }
 
+/**
+ * Function to add an activity into the cardContainer. It reads from a collection in Firebase.
+ * @param {Object} doc is a reference to a Firebase Collection
+ * @param {String} template is a String to be editted
+ * @param {Object} container is a reference to the HTML element to add
+ */
 function addActivity(doc, template, container) {
   const hobbies = doc.data();
   let src = "";
@@ -121,6 +138,9 @@ function addActivity(doc, template, container) {
   container.innerHTML += template;
 }
 
+/**
+ * Function to remove the current user from the Activity.
+ */
 function unjoinActivity() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -139,6 +159,9 @@ function unjoinActivity() {
   });
 }
 
+/**
+ * Function to add the current user into the Activity.
+ */
 function joinActivity() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {

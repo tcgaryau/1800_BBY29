@@ -1,3 +1,8 @@
+/**
+ * AJax function to represent Getting from a path.
+ * @param {String} path or url to GET.
+ * @param {function} callback function
+ */
 function ajaxGET(path, callback) {
   const xhr = new XMLHttpRequest();
   xhr.onload = function () {
@@ -9,7 +14,7 @@ function ajaxGET(path, callback) {
   xhr.send();
 }
 
-//Navbar - DOM
+//Navbar - DOM and adding the attributes.
 let navBar = document.getElementById("navbar");
 navBar.classList.add(
   "navbar",
@@ -19,6 +24,9 @@ navBar.classList.add(
   "fixed-top"
 );
 
+/**
+ * Grabs the data from navbar.xml and also adds in the logout by using JavaScript Dom.
+ */
 ajaxGET("./xml/navbar.xml", function (data) {
   navBar.innerHTML = data;
   firebase.auth().onAuthStateChanged((user) => {

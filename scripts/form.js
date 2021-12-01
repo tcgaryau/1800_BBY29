@@ -1,10 +1,15 @@
+// Declaring the variables.
 const activityCategory = document.getElementById("activityCategory");
 const city = document.getElementById("city");
 const activityForm = document.querySelector("#activityForm");
 
-
+/**
+ * Event handler when submitting to create a collection in Hobbies in Firebase.
+ */
 activityForm.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  // Variables values from the form.
   let aName = document.getElementById("activityName").value;
   let category = activityCategory.options[activityCategory.selectedIndex].text;
   let description = document.getElementById("descriptionText").value;

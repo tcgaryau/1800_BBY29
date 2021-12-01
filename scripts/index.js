@@ -1,3 +1,6 @@
+/**
+ * Function to insert the user's name into our landing page in index.html
+ */
 function insertName() {
   firebase.auth().onAuthStateChanged((user) => {
     // Check if user is signed in:
@@ -19,4 +22,5 @@ function insertName() {
     }
   });
 }
+
 insertName();
