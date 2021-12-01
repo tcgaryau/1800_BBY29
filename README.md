@@ -1,21 +1,23 @@
-## My Web Application (Title)
+## Our Web Application Hobby Buddies
 
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
-* Hello, I'm Felix.
-* Hi my name is Gary. I'm excited about this project because I get to learn how to colloborate using git.
-* Hello my name is Dongwan(Jake). I am excited to work with y'all let''s make the best web application.
+This browser based web application helps people reconnect after CoVID by facilitating group activities based on common interests and hobbies. They can create or join other user-created activities.
+
+* Authors (Group BBY29): 
+* Felix Ng
+* Gary Au
+* Dongwan Kang (Jake)
 	
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
 * JavaScript
 * Bootstrap 
-* ...
+* Firebase, Firestore
 	
 ## Content
 Content of the project folder:
@@ -23,7 +25,12 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
+├── .firebaserc              # Firebase generated file
+├── 404.html                 # Firebase generated error page
+├── activityDetails.html     # Activity HTML file, this is what users see after clicking on an Activity.
+├── createActivities.html    # Creating HTML file, this is the form page user fills out to create an Activity.
+├── editDetails.html         # HTML file
+├── index.html               # landing HTML file, this is what users see when they come to the url.
 └── README.md
 
 It has the following subfolders and files:
