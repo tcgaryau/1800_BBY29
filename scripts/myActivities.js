@@ -1,18 +1,25 @@
+// Declaring variables.
 let docRef = db.collection("Hobbies");
 let hostActivity = document.querySelector("#hostActivity");
 let joinActivity = document.querySelector("#joinActivity");
 let joinActivityContainer = document.querySelector("#joinActivityContainer");
 let hostActivityContainer = document.querySelector("#hostActivityContainer");
 
+/**
+ * Checks if user is logged in, if they are read their joinedActivity and hostedActivity
+ * fields and calls the addActivity function. Otherwise, they are redirected to login.html.
+ */
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     db.collection("users")
       .doc(user.uid)
       .get()
       .then((userDoc) => {
+        // Declare local variable to store user joinedActivity and hostedActivity arrays.
         let joinedArray = userDoc.data().joinedActivity;
         let hostedArray = userDoc.data().hostedActivity;
 
+        // Checks if the joinedArray not undefined then calls addActivity
         if (typeof joinedArray !== "undefined") {
           let template = "";
           joinedArray.forEach((element) => {
@@ -24,6 +31,7 @@ firebase.auth().onAuthStateChanged((user) => {
               });
           });
         }
+        // Checks if the hostedArray not undefined then calls addActivity
         if (typeof hostedArray !== "undefined") {
           let template = "";
           hostedArray.forEach((element) => {
@@ -42,6 +50,12 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
+/**
+ * Function to add an activity into the cardContainer. It reads from a collection in Firebase.
+ * @param {Object} doc is a reference to a Firebase Collection
+ * @param {String} template is a String to be editted
+ * @param {Object} container is a reference to the HTML element to add
+ */
 function addActivity(doc, template, container) {
   let hobbies = doc.data();
   let src = "";
@@ -67,10 +81,12 @@ function addActivity(doc, template, container) {
   }
   let joinedMembers = 1;
 
+  // Checks joinedUser to make sure this array exists.
   if (typeof hobbies.joinedUsers !== "undefined") {
     joinedMembers += hobbies.joinedUsers.length;
   }
 
+  // Adds a card into the container.
   template += `
       <div class="card mb-3" id=${doc.id}>
         <div class="row g-0 pt-5 bg-light">
@@ -95,9 +111,9 @@ function addActivity(doc, template, container) {
         </div>
       </div>
     `;
-
   container.innerHTML += template;
 
+  // Checks for all card class and adds an id from Firebase into their attribute.
   let cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     card.addEventListener("click", function (e) {
@@ -108,12 +124,14 @@ function addActivity(doc, template, container) {
     });
   });
 
+  // Adds a mouse pointer to all the cards.
   cards.forEach((card) => {
     card.addEventListener("mouseenter", function (e) {
       e.target.style.cursor = "pointer";
       e.target.style.color = "#b4c6a6";
     });
   });
+  // Removes the mouse pointer when it exists the card.
   cards.forEach((card) => {
     card.addEventListener("mouseleave", function (e) {
       e.target.style.color = null;
@@ -121,12 +139,14 @@ function addActivity(doc, template, container) {
   });
 }
 
+// Switches the viewable tab to view hostedAcitivites
 hostActivity.addEventListener("click", (e) => {
   e.preventDefault;
   joinActivityContainer.classList.add("unactive");
   hostActivityContainer.classList.remove("unactive");
 });
 
+// Switches the viewable tab to view the joinedActivities
 joinActivity.addEventListener("click", (e) => {
   e.preventDefault;
   joinActivityContainer.classList.remove("unactive");
