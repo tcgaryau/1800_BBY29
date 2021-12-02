@@ -125,14 +125,6 @@ body {
   background-color: #f3f0d7 !important;
 }
 
-.card-body:hover {
-  color:#b4c6a6;
-}
-
-.card-body .card-title:hover {
-  color:#b4c6a6;
-}
-
 .fetching {
   display: none;
 }
