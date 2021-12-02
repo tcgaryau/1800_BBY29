@@ -2,6 +2,7 @@
 let cardContainer = document.querySelector(".cardContainer");
 let fetching = document.querySelector(".fetching");
 
+
 /**
  * Checks if the user is logged in. If they are not it will redirect them to the login page.
  */
@@ -11,16 +12,6 @@ firebase.auth().onAuthStateChanged((user) => {
     window.location.replace("login.html");
   }
 });
-
-/**
- * Function that checks if the user is at the bottom of the page. Calls getNextHobbies() if they are at the bottom of the page.
- */
-const handleScroll = () => {
-  let triggerHeight = window.innerHeight + window.scrollY;
-  if (triggerHeight >= document.body.offsetHeight) {
-    getNextHobbies();
-  }
-};
 
 // Store last document
 let lastDoc = null;
@@ -34,20 +25,18 @@ const getNextHobbies = async () => {
   ref = db
     .collection("Hobbies")
     .orderBy("name")
-    .startAfter(lastDoc || 0)
-    .limit(3);
   const data = await ref.get();
-
-  let template = "";
-  data.docs.forEach((doc) => {
-    addActivity(doc, template, cardContainer);
-  });
 
   fetching.classList.remove("active");
   lastDoc = data.docs[data.docs.length - 1];
 
   if (data.empty) {
     document.removeEventListener("scroll", handleScroll);
+  } else {
+    data.docs.forEach((doc) => {
+      
+      addActivity(doc, cardContainer);
+    });
   }
 };
 
@@ -57,8 +46,9 @@ const getNextHobbies = async () => {
  * @param {String} template is a String to be editted
  * @param {Object} container is a reference to the HTML element to add
  */
-function addActivity(doc, template, container) {
+function addActivity(doc, container) {
   const hobbies = doc.data();
+  let template = "";
   let src = "";
   switch (hobbies.category) {
     case "Gaming":
@@ -144,9 +134,6 @@ function addActivity(doc, template, container) {
     });
   });
 }
-
-// Checks if it has hit the bottom of the page.
-document.addEventListener("scroll", handleScroll);
 
 // Wait for DOM to load
 window.addEventListener("DOMContentLoaded", () => getNextHobbies());
