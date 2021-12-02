@@ -23,7 +23,7 @@ var uiConfig = {
             // hostedActivity: hostedActivity,
           })
           .then(function () {
-            window.location.assign("main.html");
+            window.location.assign("index.html");
           })
           .catch(function (error) {
             console.log("Error when adding new user: " + error);
