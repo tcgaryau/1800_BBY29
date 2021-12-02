@@ -13,15 +13,13 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
-// Store last document
-let lastDoc = null;
-
 /**
  * Function that reads 3 activities from our Firebase document Hobbies.
  */
 const getNextHobbies = async () => {
   fetching.classList.add("active");
 
+  // Queries the Hobbies sorted in alphabetical order.
   ref = db
     .collection("Hobbies")
     .orderBy("name")
