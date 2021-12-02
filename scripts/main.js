@@ -1,6 +1,5 @@
 //Declaring variables.
 let cardContainer = document.querySelector(".cardContainer");
-let fetching = document.querySelector(".fetching");
 
 
 /**
@@ -17,7 +16,6 @@ firebase.auth().onAuthStateChanged((user) => {
  * Function that reads 3 activities from our Firebase document Hobbies.
  */
 const getNextHobbies = async () => {
-  fetching.classList.add("active");
 
   // Queries the Hobbies sorted in alphabetical order.
   ref = db
@@ -25,7 +23,6 @@ const getNextHobbies = async () => {
     .orderBy("name")
   const data = await ref.get();
 
-  fetching.classList.remove("active");
   lastDoc = data.docs[data.docs.length - 1];
 
   if (data.empty) {
@@ -114,8 +111,6 @@ function addActivity(doc, container) {
     });
   });
 
-  // Removes the fetching text.
-  fetching.classList.remove("active");
 
   // Adds a mouse pointer to all the cards.
   cards.forEach((card) => {
