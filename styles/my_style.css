@@ -125,17 +125,6 @@ body {
   background-color: #f3f0d7 !important;
 }
 
-.fetching {
-  display: none;
-}
-
-.fetching.active {
-  display: block;
-  font-size: 2em;
-  text-align: center;
-  margin: 10px 0;
-}
-
 .unactive {
   display: none;
 }
