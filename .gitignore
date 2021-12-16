@@ -2,3 +2,4 @@
 .vscode/
 scripts/firebaseAPI.js
 bootstrap.css
+node_modules
